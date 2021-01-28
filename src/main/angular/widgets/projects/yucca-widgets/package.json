@@ -1,6 +1,6 @@
 {
-  "name": "@afranceschetti/ngx-yucca-widgets",
-  "version": "1.0.9",
+  "name": "@lucademmacsi/ngx-yucca-widgets",
+  "version": "1.0.10",
   "description": "Yucca Widget Angular Elements ",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
@@ -21,6 +21,6 @@
     "./dist"
   ],
   "repository": {
-    "url": "git://github.com/afranceschetti/test-publish-npm-ng.git"
+    "url": "git://github.com/lucademmacsi/test-widgets.git"
   }
 }

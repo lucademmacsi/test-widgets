@@ -1,6 +1,6 @@
 {
-  "name": "@afranceschetti/wc-yucca-widgets",
-  "version": "1.0.23",
+  "name": "@lucademmacsi/wc-yucca-widgets",
+  "version": "1.0.24",
   "description": "Yucca Widget Custom Web Components ",
   "keywords": [
     "yucca",
@@ -12,6 +12,6 @@
     "dist"
   ],
   "repository": {
-    "url": "git://github.com/afranceschetti/test-publish-npm-ng.git"
+    "url": "git://github.com/lucademmacsi/test-widgets.git"
   }
 }
