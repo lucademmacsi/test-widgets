@@ -1,0 +1,35 @@
+<div class="yucca-widget yucca-control-select" id="{{widgetId}}">
+    <div class="yucca-control-main-header">
+        <div class="yucca-control-main-label">{{label}}</div>
+        <div class="yucca-control-main-hint">{{hint}}</div>
+        <!-- //		  <div class="yucca-control-reset-link"><a href ng-click="reset()">Reset</a></div>  -->
+    </div>
+    <div class="yucca-control-type-select" *ngIf="render == 'select'">
+        <select (change)="select(selected.key)" [(ngModel)]="selected.key" class="yucca-select"
+            id="yucca-control-{{widgetId}}">
+            <option disabled selected>{{emptyLabel}}</option>
+            <option *ngFor="let c of columns" [value]="c.key">{{c.label}}</option>
+        </select>
+    </div>
+    <div class="yucca-control-type-radio" *ngIf="render == 'radio'">
+        <div class="yucca-control-items {{flexDirection}} {{flexAlignItems}}">
+            <div class="radio" *ngFor="let c of columns">
+                <label (click)="select(c.key)">
+                    <input type="radio" name="yucca-control-{{widgetId}}" [checked]="c.key==selected.key"
+                        [value]="c.key">
+                    <label>{{c.label}}</label>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="yucca-control-type-button" *ngIf="render == 'button'">
+        <div class="yucca-control-items {{flexDirection}} {{flexAlignItems}}">
+            <div class="yucca-control-select-button" *ngFor="let c of columns;"
+                [ngClass]="{'active': c.key == selected.key}">
+                <a (click)="select(c.key)">{{c.label}}</a>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngFor="let c of columns"[ngClass]="{'active': c.key == selected.key}">
+        <a href (click)="select(c.key)">{{c.label}}</a></div> -->
+</div>

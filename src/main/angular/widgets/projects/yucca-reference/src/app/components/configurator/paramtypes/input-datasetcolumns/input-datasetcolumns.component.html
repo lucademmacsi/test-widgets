@@ -1,0 +1,87 @@
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    <h5 translate>{{errorMessage.title}}</h5>
+    {{errorMessage.message|translate}}
+</div>
+<div *ngIf="warningMessage" class="alert alert-warning" role="alert">
+    <h5 translate>{{warningMessage.title}}</h5>
+    {{warningMessage.message|translate}}
+</div>
+<div class="container">
+    <div *ngIf="loading" class="yucca-loading" role="status" aria-label="Loading..."></div>
+    <h4 translate>param_type_datasetcolumns_form_intro</h4>
+    <form *ngIf="!loading" class="form-inline">
+        <label for="param_key" class="mb-2 mr-sm-2"><span translate>param_name_datasetcolumn_key</span></label>
+        <div class="input-group input-group-sm mb-2 mr-sm-2">
+            <input type="text" class="form-control  form-control-sm" placeholder="{{'suggest_placeholder'|translate}}"
+                name="param_key" [resultTemplate]="rt" [(ngModel)]="suggestColumn" (blur)="selectColumnKey()"
+                (keyup.enter)="selectColumnKey()" [ngbTypeahead]="search" [editable]='false'
+                [inputFormatter]="formatter">
+            <span class="input-group-append">
+                <button class="btn btn-default btn-sm" type="button" [ngbPopover]="popContent" placement="bottom"
+                    [popoverTitle]="popTitle">
+                    <fa-icon [icon]="faInfo"></fa-icon>
+                </button>
+            </span>
+        </div>
+        <label for="param_label" class="mb-2 mr-sm-2"><span translate>param_name_datasetcolumn_label</span></label>
+        <input type="text" class="form-control  form-control-sm mb-2 mr-sm-2"
+            placeholder="{{'suggest_placeholder'|translate}}" name="param_label" [(ngModel)]="column.label">
+        <label for="param_countingmode" class="mb-2 mr-sm-2"><span
+                translate>param_name_datasetcolumn_countingmode</span></label>
+        <select class="form-control  form-control-sm mb-2 mr-sm-2" name="param_countingmode"
+            [(ngModel)]="column.countingMode">
+            <option>count</option>
+            <option>sum</option>
+        </select>
+        <button (click)='addColumn()' class="btn btn-secondary btn-sm mb-2 "
+            translate>param_type_datasetcolumns_add</button>
+    </form>
+    <div *ngIf="datasetColumns.length>0">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <h4 translate>param_type_datasetcolumns_table_intro</h4>
+        <table class='table table-sm'>
+            <thead>
+                <tr>
+                    <th><small translate>param_name_datasetcolumn_key</small></th>
+                    <th><small translate>param_name_datasetcolumn_label</small></th>
+                    <th><small translate>param_name_datasetcolumn_countingmode</small></th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of datasetColumns; let index = index">
+                    <td><small>{{c.key}}</small></td>
+                    <td><small>{{c.label}}</small></td>
+                    <td><small>{{c.countingMode}}</small></td>
+                    <td><small><button class='btn btn-sm btn-secondary' (click)="removeColumn(index)"
+                                translate>param_type_datasetcolumns_remove</button></small></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ng-template #popTitle><span translate>param_type_datasetcolumns_popup_title</span></ng-template>
+<ng-template #popContent>
+    <small translate>param_type_datasetcolumns_popup_intro</small><br><br>
+    <table class='table table-sm'>
+        <thead>
+            <tr>
+                <th><small>Name</small></th>
+                <th><small>Alias</small></th>
+                <th><small>Type</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of columns">
+                <td><small>{{t.name}}</small></td>
+                <td><small>{{t.alias}}</small></td>
+                <td><small>{{t.datatype}}</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+</ng-template>
+<ng-template #rt let-r="result" let-t="term">
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>

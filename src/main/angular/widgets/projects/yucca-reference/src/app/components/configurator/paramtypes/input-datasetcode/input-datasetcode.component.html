@@ -1,0 +1,31 @@
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    <h5 translate>{{errorMessage.title}}</h5>
+    {{errorMessage.message|translate}}
+</div>
+<div *ngIf="warningMessage" class="alert alert-warning" role="alert">
+    <h5 translate>{{warningMessage.title}}</h5>
+    {{warningMessage.message|translate}}
+</div>
+<div class="container">
+    <div *ngIf="loading" class="yucca-loading" role="status" aria-label="Loading..."></div>
+    <form *ngIf="!loading">
+        <label for="param_name_{{p.value.name}}">{{'param_name_' + p.value.name|translate}}</label>
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control  form-control-sm"
+                placeholder="{{'param_name_' + p.value.name|translate}}" name="param_name_{{p.value.demo}}"
+                [(ngModel)]="value" (blur)="apply()" (keyup.enter)="apply()" [ngbTypeahead]="search" [editable]='false'>
+            <span class="input-group-append">
+                <button class="btn btn-default btn-sm" type="button" [ngbPopover]="popContent" placement="bottom"
+                    [popoverTitle]="popTitle">
+                    <fa-icon [icon]="faInfo"></fa-icon>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+<ng-template #popTitle><span translate>param_type_datasetcode_popup_title</span></ng-template>
+<ng-template #popContent>
+    <small translate>param_type_datasetcode_popup_intro</small><br><br>
+    <div *ngFor="let t of datasetcodes">&nbsp;-&nbsp;<small>{{t}}</small></div>
+
+</ng-template>

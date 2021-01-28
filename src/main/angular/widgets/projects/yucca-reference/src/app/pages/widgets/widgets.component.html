@@ -1,0 +1,19 @@
+<div class="container" id="widget_page">
+    <h1 translate>page_widgets_main_title</h1>
+    <p [innerHtml]="'page_widgets_intro'|translate"></p>
+    <ng-container *ngFor="let s of Widgets | keyvalue">
+        <section class='widget-section' *ngIf='s.key!="related"'>
+            <h2><span translate>widgets_section_{{s.key}}</span></h2>
+            <div class='widget-section-content'>
+                <div *ngFor="let w of s.value | keyvalue" class="widget-card"
+                    [routerLink]="['/widgets/', s.key, w.key]">
+                    <img src=" assets/images/widgets/dataset/{{w.key}}.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" translate>{{w.key + '_title'}}</h5>
+                        <p class="card-text" translate>{{w.key + '_introshort'}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+</div>

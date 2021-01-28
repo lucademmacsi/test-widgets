@@ -1,0 +1,68 @@
+<div class="container">
+    <!--<div class="radio-button-container">
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input color-radio-button" type="radio" id="mainChartColor" name="color"
+                value="mainChartColor" [(ngModel)]="selectedOption">
+            <label class="form-check-label"
+                for="mainChartColor">{{'input_colors_modal_choose_main_color'|translate}}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input color-radio-button" type="radio" id="chartColors" name="color"
+                value="chartColors" [(ngModel)]="selectedOption">
+            <label class="form-check-label"
+                for="chartColors">{{'input_colors_modal_choose_chart_colors'|translate}}</label>
+        </div>
+    </div>-->
+
+    <div class='tab-bar example-tab-bar'>
+        <div class="tab-bar-item">
+            <a (click)="currentTab = 'mainColor'" [ngClass]="{'active': currentTab === 'mainColor'}"
+                translate>input_colors_modal_choose_main_color</a>
+        </div>
+        <div class="tab-bar-item ">
+            <a (click)="currentTab = 'chartColors'" [ngClass]="{'active': currentTab === 'chartColors'}">Custom
+                Element</a>
+        </div>
+        <div class="tab-bar-filler">&nbsp;</div>
+    </div>
+    <div *ngIf="currentTab === 'mainColor'" class="tabContent">
+        <div class="form-inline">
+            <label for="param_name_{{p.value.name}}  mr-sm-4 ">{{'param_name_' + p.value.name|translate}}</label>
+            <input type="color" class="form-control  form-control-sm mr-sm-4 input-color"
+                placeholder="{{'param_name_' + p.value.name|translate}}" name="param_name_{{p.value.demo}}"
+                [(ngModel)]="mainChartColor" (blur)="apply()" (keyup.enter)="apply()">
+        </div>
+    </div>
+    <div *ngIf="currentTab == 'chartColors'" class="tabContent">
+        <div class="form-inline">
+            <label for="param_name_{{p.value.name}} mr-sm-4 ">{{'input_colors_modal_pick_colors'|translate}}</label>
+            <input type="color" class="form-control  form-control-sm mr-sm-4 input-color"
+                placeholder="{{'param_name_' + p.value.name|translate}}" name="param_name_{{p.value.demo}}"
+                [(ngModel)]="tmpColor" (blur)="apply()" (keyup.enter)="apply()">
+            <button class="btn btn-primary btn-xs"
+                (click)="pushColor()">{{'input_colors_modal_pick_colors_add'|translate}}</button>
+        </div>
+
+        <div class="colors-list">
+            <strong translate>input_colors_modal_list</strong>
+            <ul>
+                <li *ngFor="let color of chartColors; let i = index">
+                    <div class="color-list-hex">{{color}}</div>
+                    <div class="color-list-preview" style="background-color: {{color}}"></div>
+                    <div>
+                        <button class="btn btn-secondary btn-xs" (click)="removeColor(i)" translate>remove</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class='preview-colors-panel'>
+        <strong translate>input_colors_modal_preview</strong>
+        <div class='preview-colors'>
+            <div *ngFor="let color of previewColors; let i = index" class='preview-color-item'
+                style="background-color: {{color}}">
+            </div>
+        </div>
+    </div>
+</div>

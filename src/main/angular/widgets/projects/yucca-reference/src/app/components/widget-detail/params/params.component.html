@@ -1,0 +1,29 @@
+<h2><span translate>detail_menu_parameters</span></h2>
+<p translate>detail_parameters_intro</p>
+<div *ngFor="let s of params" id="group_param_{{s.group}}">
+    <h3><span translate>group_param_{{s.group}}</span> <strong *ngIf="s.group=='specific'"
+            translate>{{widget.key}}_title</strong></h3>
+    <p><small translate>group_param_{{s.group}}_intro</small></p>
+    <table class="table table-sm table-bordered table-params">
+        <tbody>
+            <tr *ngFor="let p of s.params | keyvalue">
+                <td><span class="param_key">{{p.value.name}}</span>
+                    <span class="param_mandatory" *ngIf="p.value.mandatory">*</span></td>
+                <td>
+                    <span *ngIf="s.group!='specific'" class="param_name" translate>param_name_{{p.value.name}}</span>
+                    <span *ngIf="s.group=='specific'" class="param_name"
+                        translate>param_name_{{p.value.name}}_{{widget.key}}</span>
+                </td>
+                <td>
+                    <div *ngIf="s.group!='specific'" class="param_help"
+                        [innerHtml]="'param_help_' + p.value.name|translate"></div>
+                    <div *ngIf="s.group=='specific'" class="param_help"
+                        [innerHtml]="'param_help_' + p.value.name +'_' + widget.key|translate"></div>
+                </td>
+                <td><span class="param_type" translate>param_type_{{p.value.jsType}}</span></td>
+                <td><span class="param_example code" [innerHtml]="formatJsObject(p.value.example)"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

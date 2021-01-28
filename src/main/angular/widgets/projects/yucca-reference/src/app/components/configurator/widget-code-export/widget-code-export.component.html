@@ -1,0 +1,79 @@
+<div class="modal-header">
+    <h4 class="modal-title" translate>widget_code_export_title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p [innerHtml]="'widget_code_export_intro'|translate"></p>
+    <div class='tab-bar example-tab-bar'>
+        <div class="tab-bar-item">
+            <a (click)="codeTab = 'angular_code'"
+                [ngClass]="{'active': codeTab === 'angular_code'}">AngularComponent</a>
+        </div>
+        <div class="tab-bar-item ">
+            <a (click)="codeTab = 'custom_code'" [ngClass]="{'active': codeTab === 'custom_code'}">Custom Element</a>
+        </div>
+        <div class="tab-bar-filler">&nbsp;</div>
+    </div>
+    <div *ngIf="codeTab === 'angular_code'" class='tab-content angular-code'>
+        <div class="card-container">
+            <div class='card card-compact'>
+                <div class='card-title'>
+                    <div class=card-title-text>HTML</div>
+                    <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                        [copy-clipboard]="demo.clipboard.angular.code" (copied)="notify($event)">Copy</div>
+                </div>
+                <div class="card-body">
+                    <div class='code code-html'>
+                        <div [innerHtml]="demo.formatted.angular.code"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container ">
+            <div class='card  card-compact'>
+                <div class='card-title'>
+                    <div class=card-title-text>Typescript</div>
+                    <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                        [copy-clipboard]="demo.clipboard.angular.data" (copied)="notify($event)">Copy</div>
+                </div>
+                <div class="card-body">
+                    <div class='code code-js'>
+                        <div [innerHtml]="demo.formatted.angular.data"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="codeTab === 'custom_code'" class='tab-content custom-code'>
+        <div class="card-container codeTab ">
+            <div class='card card-compact'>
+                <div class='card-title'>
+                    <div class=card-title-text>HTML</div>
+                    <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                        [copy-clipboard]="demo.clipboard.custom.code" (copied)="notify($event)">Copy</div>
+                </div>
+                <div class="card-body">
+                    <div class='code code-html'>
+                        <div [innerHtml]="demo.formatted.custom.code"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container codeTab">
+            <div class='card  card-compact'>
+                <div class='card-title'>
+                    <div class=card-title-text>Javascript</div>
+                    <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                        [copy-clipboard]="demo.clipboard.custom.data" (copied)="notify($event)">Copy</div>
+                </div>
+                <div class="card-body">
+                    <div class='code code-js'>
+                        <div [innerHtml]="demo.formatted.custom.data"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

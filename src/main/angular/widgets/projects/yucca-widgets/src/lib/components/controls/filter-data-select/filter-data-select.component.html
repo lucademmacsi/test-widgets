@@ -1,0 +1,32 @@
+<div class="yucca-widget yucca-filter-data-select" id="{{widgetId}}">
+    <div class="yucca-control-main-header">
+        <div class="yucca-control-main-label">{{label}}</div>
+        <div class="yucca-control-main-hint">{{hint}}</div>
+        <!-- //		  <div class="yucca-control-reset-link"><a href ng-click="reset()">Reset</a></div>  -->
+    </div>
+    <div class="yucca-control-type-select" *ngIf="render == 'select'">
+        <select (change)="select(index, false)" [(ngModel)]="index" class="yucca-select"
+            id="yucca-control-{{widgetId}}">
+            <option disabled selected>{{emptyLabel}}</option>
+            <option *ngFor="let f of filters; let i = index" [value]="i">{{f.label}}</option>
+        </select>
+    </div>
+    <div class="yucca-control-type-radio" *ngIf="render == 'radio'">
+        <div class="yucca-control-items {{flexDirection}} {{flexAlignItems}}">
+            <div class="radio" *ngFor="let f of filters; let i = index">
+                <label (click)="select(i, false)">
+                    <input type="radio" name="yucca-control-{{widgetId}}" [checked]="f.selected" [value]="f.condition">
+                    <label>{{f.label}}</label>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="yucca-control-type-button" *ngIf="render == 'button'">
+        <div class="yucca-control-items {{flexDirection}} {{flexAlignItems}}">
+            <div class="yucca-control-select-button" *ngFor="let f of filters; let i = index"
+                [ngClass]="{'active': f.selected}">
+                <a (click)="select(i,true)">{{f.label}}</a>
+            </div>
+        </div>
+    </div>
+</div>

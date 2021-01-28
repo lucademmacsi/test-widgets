@@ -1,0 +1,20 @@
+<div class="yucca-widget yucca-dataset-singledata" id="{{widgetId}}" #self>
+    <yucca-widget-header [widgetTitle]="widgetTitle" [widgetSubtitle]="widgetSubtitle" [widgetIntro]="widgetIntro">
+    </yucca-widget-header>
+    <div class="yucca-widget-chart-content" [ngStyle]="{'height': widgetHeight + 'px', 'width': widgetWidth + 'px'}">
+        <div *ngIf="isLoading" class="yucca-widget-loader">
+            <div class='spinner'></div>
+        </div>
+        <div class="yucca-widget-chart" *ngIf="!isLoading">
+            <div class="yucca-singledata-label">
+                {{label}}
+            </div>
+            <div class="yucca-singledata-value">
+                {{value|safeNumber:numberFormat}}
+            </div>
+    </div>
+        <div *ngIf="infoMessage" class='yucca-widget-info-message'>{{infoMessage}}</div>
+    </div>
+    <yucca-widget-footer [widgetFooter]="widgetFooter" [debugMessages]="debugMessages" [debug]="debug">
+    </yucca-widget-footer>
+</div>

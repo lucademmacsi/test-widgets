@@ -1,0 +1,108 @@
+<div class='example-content'>
+    <h2><span translate>widget_demo_title</span></h2>
+
+    <p translate>widget_demo_intro</p>
+    <div class='tab-bar example-tab-bar'>
+        <div class="tab-bar-item">
+            <a (click)="exampleCodeTab = 'angular_code'"
+                [ngClass]="{'active': exampleCodeTab === 'angular_code'}">Angular Component</a>
+        </div>
+        <div class="tab-bar-item ">
+            <a (click)="exampleCodeTab = 'custom_code'" [ngClass]="{'active': exampleCodeTab === 'custom_code'}">Custom
+                Element</a>
+        </div>
+        <div class="tab-bar-filler">&nbsp;</div>
+    </div>
+    <div *ngIf="exampleCodeTab === 'angular_code'" class='angular-code'>
+        <div class="card-container card-container-example">
+            <div class='sticky-notes sticky-notes-example sticky-notes-angular-html'>
+                <span class="sticky-notes-content" translate>widget_detail_sticky_angular_html</span>
+                <span class="sticky-notes-arrow">&#8405;</span>
+            </div>
+            <div class='card card-compact'>
+                <div class='card-title'>
+                    <div class=card-title-text>HTML</div>
+                    <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                        [copy-clipboard]="demo.clipboard.angular.code" (copied)="notify($event)">Copy</div>
+                </div>
+                <div class="card-body">
+                    <div class='code code-html'>
+                        <div [innerHtml]="demo.formatted.angular.code"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container card-container-example">
+            <div class='sticky-notes sticky-notes-example sticky-notes-angular-ts'>
+                <span class="sticky-notes-arrow">&#8404;</span>
+                <span class="sticky-notes-content" translate>widget_detail_sticky_angular_ts</span>
+            </div>
+            <div class='card  card-compact'>
+                <div class='card-title'>
+                    <div class=card-title-text>Typescript</div>
+                    <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                        [copy-clipboard]="demo.clipboard.angular.data" (copied)="notify($event)">Copy</div>
+                </div>
+                <div class="card-body">
+                    <div class='code code-js'>
+                        <div [innerHtml]="demo.formatted.angular.data"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="exampleCodeTab === 'custom_code'" class='custom-code'>
+    <div class="card-container card-container-example ">
+        <div class='sticky-notes sticky-notes-example sticky-notes-custom-html'>
+            <span class="sticky-notes-content" translate>widget_detail_sticky_custom_html</span>
+            <span class="sticky-notes-arrow">&#10552;</span>
+        </div>
+        <div class='card card-compact'>
+            <div class='card-title'>
+                <div class=card-title-text>HTML</div>
+                <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                    [copy-clipboard]="demo.clipboard.custom.code" (copied)="notify($event)">Copy</div>
+            </div>
+            <div class="card-body">
+                <div class='code code-html'>
+                    <div [innerHtml]="demo.formatted.custom.code"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container card-container-example">
+        <div class='sticky-notes sticky-notes-example sticky-notes-custom-js'>
+            <span class="sticky-notes-arrow">&#8404;</span>
+            <span class="sticky-notes-content" translate>widget_detail_sticky_custom_js</span>
+        </div>
+        <div class='card  card-compact'>
+            <div class='card-title'>
+                <div class=card-title-text>Javascript</div>
+                <div class='copy-clipboard' title="{{'copy_to_clipboard'|translate}}"
+                    [copy-clipboard]="demo.clipboard.custom.data" (copied)="notify($event)">Copy</div>
+            </div>
+            <div class="card-body">
+                <div class='code code-js'>
+                    <div [innerHtml]="demo.formatted.custom.data"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="card-container  card-container-example dataexplorer-card" *ngIf="!widget.getRelatedWidget()">
+    <div class='sticky-notes sticky-notes-dataexplorer'>
+        <span class="sticky-notes-content">Questi sono i dati</span>
+        <span class="sticky-notes-arrow">&#10552;</span>
+    </div>
+    <div class='card'>
+        <div class='card-body'>
+            <div *ngIf="demo" class="widget-data-panel scrolling-wrapper">
+                <yucca-dataexplorer-table class="to-scroll" [datasetcode]='demo.data.datasetcode'
+                    [tenantcode]='demo.data.tenantcode' [usertoken]='demo.data.usertoken'>
+                </yucca-dataexplorer-table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<header *ngIf="widgetTitle || widgetSubtitle" class="yucca-widget-header">
+    {{widgetTitle}} <small>{{widgetSubtitle}}</small>
+</header>
+<div class="yucca-widget-intro" *ngIf="widgetIntro!=null">{{widgetIntro}}</div>

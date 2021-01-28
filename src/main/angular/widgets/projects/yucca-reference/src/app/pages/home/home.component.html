@@ -1,0 +1,41 @@
+<div class='home-welcome'>
+    <div class="home-intro-panel jumbotron">
+        <div class="home-intro-left col-sm-8">
+            <div>
+                <a href="https://yucca.smartdatanet.it" class='back-home-link'>
+                    &larr; &nbsp;<span translate>back_home_page</span>
+                </a>
+            </div>
+            <div class="jumbotron-body">
+                <div class='logocontainer'>
+                    <img class="img-center" src="assets/images/home/home_logo.png" alt="home_logo">
+                </div>
+                <div class='titlecontainer'>
+                    <h2>Yucca Dashboard</h2>
+                    <p>Una collezione di <strong>widget</strong> pronti all'uso, API per l'accesso dati e metadati</p>
+                </div>
+            </div>
+            <div class='home-btn'>
+                <a class='btn btn-third ' routerLink="widgets" (mouseover)="section = 'widgets'">
+                    <div translate>home_btn_widget</div>
+                </a>
+                <a (mouseover)="section = 'angularjs'" class='btn btn-primary card-link'
+                    href='https://userportal.smartdatanet.it/reference/#/widget' (mouseleave)="section = 'home'">
+                    <div translate>home_btn_angularjs</div>
+                </a>
+                <a (mouseover)="section = 'api'" class='btn btn-secondary card-link'
+                    href='https://userportal.smartdatanet.it/reference/#/api' (mouseleave)="section = 'home'">
+                    <div translate>home_btn_api</div>
+                </a>
+            </div>
+        </div>
+        <div class='home-intro-right col-sm-4'>
+            <div class='home-intro-panel'>
+                <p *ngIf="section == 'home'" [innerHtml]="'home_intro'|translate"></p>
+                <p *ngIf="section == 'widgets'" [innerHtml]="'home_intro_widget'|translate"></p>
+                <p *ngIf="section == 'angularjs'" [innerHtml]="'home_intro_angularjs'|translate"></p>
+                <p *ngIf="section == 'api'" [innerHtml]="'home_intro_api'|translate"></p>
+            </div>
+        </div>
+    </div>
+</div>

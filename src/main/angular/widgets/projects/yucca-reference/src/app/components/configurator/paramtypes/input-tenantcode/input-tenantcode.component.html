@@ -1,0 +1,27 @@
+<div *ngIf="serverError" class="alert alert-danger" role="alert">
+    <h5 translate>input_tenantcode_server_error</h5>
+    {{serverError.message}}
+</div>
+<div class="container">
+    <div *ngIf="loading" class="yucca-loading" role="status" aria-label="Loading..."></div>
+    <form *ngIf="!loading">
+        <label for="param_name_{{p.value.name}}">{{'param_name_' + p.value.name|translate}}</label>
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" placeholder="{{'param_name_' + p.value.name|translate}}"
+                name="param_name_{{p.value.demo}}" [(ngModel)]="value" (blur)="apply()" (keyup.enter)="apply()"
+                [ngbTypeahead]="search" [editable]='false'>
+            <span class="input-group-append">
+                <button class="btn btn-default btn-sm" type="button" [ngbPopover]="popContent" placement="bottom"
+                    [popoverTitle]="popTitle">
+                    <fa-icon [icon]="faInfo"></fa-icon>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+<ng-template #popTitle><span translate>param_type_tenantcode_popup_title</span></ng-template>
+<ng-template #popContent>
+    <small translate>param_type_tenantcode_popup_intro</small><br><br>
+    <div *ngFor="let t of tenantcodes">&nbsp;-&nbsp;<small>{{t}}</small></div>
+
+</ng-template>

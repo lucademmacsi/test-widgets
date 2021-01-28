@@ -1,0 +1,92 @@
+<h2><span translate>use_angular_title</span></h2>
+<p [innerHtml]="'use_angular_intro'|translate"></p>
+<h5 translate>use_angular_parameters_title</h5>
+<p [innerHtml]="'use_angular_parameters_content'|translate"></p>
+<div class='two-panel-container'>
+  <div>
+    <h5><strong><code>src/app/app.component.ts</code></strong></h5>
+
+    <code class='code-panel'><pre>import  &#123; Component, OnInit  &#125; from '@angular/core';
+<em>import &#123; NumberFormat &#125; from '@yucca/yucca-widgets';</em>
+
+@Component( &#123;
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+ &#125;)
+
+export class AppComponent  implements OnInit&#123;
+  <em>datasetcode:string;</em>
+  <em>widgetTitle: string;</em>
+  <em>numberFormat: NumberFormat;</em>  
+  <span class='js-comment'><em>// alternative for lazy programmer</em>  </span>
+  <span class='js-comment'><em>// numberFormat: any;</em></span>  
+  ...
+
+  constructor() &#123; &#125;
+  ngOnInit(): void &#123;
+    <em>this.datasetcode = 'NobelPrizeByWinner_9081';</em>
+    <em>this.widgetTitle = 'Nobel Prize';</em>
+    <em>this.numberFormat = new NumberFormat();</em>
+    <em>this.numberFormat.isEuro = true;</em>
+    <span class='js-comment'><em>// alternative</em></span>
+    <span class='js-comment'><em>// this.numberFormat = &#123;isEuro: true&#125;;</em></span>
+  &#125;</pre></code>
+  </div>
+  <div>
+    <h5><code>src/app/app.component.html</code></h5>
+    <code class='code-panel'><pre> <span class='html-comment'>&#60;!-- some content --&#62;</span>
+
+ <em>&#60;yucca-discrete-table 
+  [datasetcode]='datasetcode' 
+  [widgetTitle]='widgetTitle'
+  [numberFormat]='numberFormat'
+  &hellip;
+&#62;
+&#60;/yucca-discrete-table&#62;</em>
+
+<span class='html-comment'>&#60;!-- other content --&#62;</span></pre></code>
+  </div>
+
+</div>
+<h5 translate>use_angular_events_title</h5>
+<p [innerHtml]="'use_angular_events_content'|translate"></p>
+<div>
+  <h5><code>src/app/app.component.html</code></h5>
+  <code class='code-panel'><pre> <span class='html-comment'>&#60;!-- this widget send an event to filter year (for example) --&#62;</span>
+
+&#60;yucca-control-select 
+    [label]='yearControlLabel'
+    [valueColumns]="yearControlvalueColumn"  
+    &hellip;
+    [widgetId]="yearControleventId"
+&#62;
+&#60;/yucca-control-select&#62;
+
+<span class='html-comment'>&#60;!-- this widget send an event to filter country (for example) --&#62;</span>
+
+&#60;yucca-control-select 
+    [label]='countryControlLabel'
+    [valueColumns]="countryControlvalueColumn"  
+    &hellip;
+    <em>[widgetId]="countryControleventId"</em>
+&#62;
+&#60;/yucca-control-select&#62;
+
+<span class='html-comment'>&#60;!-- this widget listen all events  --&#62;</span>
+&#60;yucca-discrete-table 
+  [datasetcode]='datasetcode_1' 
+  &hellip;
+&#62;
+&#60;/yucca-discrete-table&#62;
+
+<span class='html-comment'>&#60;!-- this widget listen only year --&#62;</span>
+&#60;yucca-discrete-table 
+  [datasetcode]='datasetcode_2' 
+  &hellip;
+  <em>[acceptedControlEventId]="secondWidgetAcceptedEvent"</em>   <span class='html-comment'>&#60;!-- <span class='js-comment'><em>in component.ts secondWidgetAcceptedEvent=["yearControleventId"]</em></span> --&#62;</span>
+&#62;
+&#60;/yucca-discrete-table&#62;
+
+
+</pre></code>
+</div>

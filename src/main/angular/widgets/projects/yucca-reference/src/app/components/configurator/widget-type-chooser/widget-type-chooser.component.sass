@@ -1,0 +1,38 @@
+@import '../../../../styles/settings/_variables.sass'
+.widget-section
+    margin-top: .5rem
+    h2
+        margin-bottom: .5rem
+        font-size: 1rem
+.widget-section-content
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+    align-content: space-between
+    margin-bottom: 1rem
+    border: solid #ccc
+    border-width: 0px 0 0 0px
+    .widget-card
+        padding: 0
+        border: none
+        cursor: pointer
+        flex-basis: 12.5%
+        // background: #ebf4f6
+        border: solid $grey-border
+        border-width: 1px
+        margin: 0 1rem 1rem 0
+        // box-shadow: $box-shadow
+        .card-img-top
+            background: #fff
+        .card-body
+            padding: .5rem
+            h5
+                font-size: .7rem
+                font-weight: normal
+                margin-bottom: 0
+        .card-title
+            font-size: .9rem
+        p
+            font-size: .7rem
+    .widget-card:hover
+        box-shadow: $box-shadow-hover

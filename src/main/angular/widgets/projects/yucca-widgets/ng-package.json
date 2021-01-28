@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../projects/yucca-widgets/dist",
+  "assets": [
+    "assets/styles/*.css"
+  ],
+  "whitelistedNonPeerDependencies": [
+    "c3",
+    "d3-sankey"
+  ],
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}

@@ -1,0 +1,79 @@
+<div class="yucca-widget yucca-dataset-dataexplorer-table" id="{{widgetId}}" #self>
+    <div class="yucca-widget-intro" *ngIf="widgetIntro!=null">{{widgetIntro}}</div>
+
+    <div class="yucca-widget-chart-content">
+        <section>
+            <div *ngIf="isLoading" class="yucca-dataset-dataexplorer-table-loading">
+                <div class="yucca-widget-loader">
+                    <div class='spinner'></div>
+                </div>
+            </div>
+            <div *ngIf="!isLoading">
+                <div class="yucca-dataset-dataexplorer-table-container">
+                    <h1 *ngIf="widgetTitle">{{widgetTitle}}</h1>
+                    <h3 *ngIf="widgetSubtitle" class="subtitle">{{widgetSubtitle}}</h3>
+                    <i *ngIf="widgetDescription">{{widgetDescription}}</i>
+                    <table class="yucca-dataset-dataexplorer-table-table">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let c of columns" (click)="orderBy(c.name)"
+                                    class="yucca-dataset-dataexplorer-table-th-{{c.name}} yucca-dataset-dataexplorer-table-th"
+                                    [ngStyle]="{'background-color': (highlightedColumn == c.name) ? '#eee' : 'transparent'}"
+                                    (mouseover)="onMouseover(c.name)" (mouseout)="onMouseout(c.name)">
+                                    <span>{{c.alias}}</span>
+                                    <span class="yucca-dataset-dataexplorer-sort-up"
+                                        *ngIf="orderByColumn['column'] === c.name && !orderByColumn['reverse']">
+                                        &rsaquo;
+                                    </span>
+                                    <span class="yucca-dataset-dataexplorer-sort-down"
+                                        *ngIf="orderByColumn['column'] === c.name && orderByColumn['reverse']">
+                                        &rsaquo;
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of dataView">
+                                <td *ngFor="let c of columns" class="yucca-dataset-dataexplorer-table-td-{{c.name}}">
+                                    <span *ngIf="c.datatype == 'dateTime'">{{d[c.name]| odataDateFormat|date
+                                        :'dd/MM/yyyy'}}</span>
+                                    <span *ngIf="c.datatype != 'dateTime'">{{d[c.name]}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="yucca-dataset-dataexplorer-table-pagination">
+                    <div class="yucca-dataset-dataexplorer-table-pagination-total">Total: {{data.length}}</div>
+                    <div class="yucca-dataset-dataexplorer-table-pagination-controls">
+                        <button [disabled]="currentPage == 0" (click)="goToPage(currentPage-1)"
+                            class="yucca-dataset-dataexplorer-table-pagination-btn">&lsaquo;</button>
+                        <div class="yucca-dataset-dataexplorer-table-pagination-pages">
+                            Page:{{currentPage + 1}}/{{totalPages}}</div>
+                        <button [disabled]="currentPage == totalPages-1" (click)="goToPage(currentPage+1)"
+                            class="yucca-dataset-dataexplorer-table-pagination-btn">&rsaquo;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="yucca-widget-debug" *ngIf="debugMessages.errors.length > 0">
+            Mancano uno o più parametri obbligatori
+        </section>
+        <section class="yucca-widget-debug" *ngIf="debug">
+            <div *ngIf="debugMessages.errors.length > 0">
+                errori:
+                <ul>
+                    <li *ngFor="let m of debugMessages.errors" class="debug-error">{{m}}</li>
+                </ul>
+            </div>
+            <div *ngIf="debugMessages.warnings.length > 0">
+                avvisi:
+                <ul>
+                    <li *ngFor="let m of debugMessages.warnings" class="debug-warning">{{m}}</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer *ngIf="widgetFooter">{{widgetFooter}}</footer>
+</div>

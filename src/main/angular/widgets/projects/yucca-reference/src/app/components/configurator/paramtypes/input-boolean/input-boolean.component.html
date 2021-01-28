@@ -1,0 +1,13 @@
+<form>
+    <label for="param_name_{{p.value.name}}">{{'param_name_' + p.value.name|translate}}</label>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioTrue" [value]="true"
+            [(ngModel)]="value" (blur)="apply()">
+        <label class="form-check-label" for="inlineRadioTrue">True</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioFalse" [value]="false"
+            [(ngModel)]="value" (blur)="apply()">
+        <label class="form-check-label" for="inlineRadioFalse">False</label>
+    </div>
+</form>

@@ -1,0 +1,104 @@
+<div class='side-menu-scroll-top' (click)="scrollToId('top')" translate>side_menu_scroll_top</div>
+<div class='container-side'>
+    <div class='side-menu' id='side-menu-top'>
+        <h1><span translate>{{widget.key}}_title</span></h1>
+        <div class='side-menu-item' label="Overview" (click)="section = 'section_overview'"
+            [ngClass]="{'active': section === 'section_overview'}">
+            <div translate>detail_menu_overview</div>
+        </div>
+        <div class='side-menu-item' (click)="section = 'section_parameters'"
+            [ngClass]="{'active': section === 'section_parameters'}">
+            <div translate>detail_menu_parameters</div>
+            <ng-container *ngIf="section == 'section_parameters'">
+                <div class='side-menu-subitem' *ngFor="let s of params" (click)="scrollToId('group_param_'+s.group)">
+                    <span translate>group_param_{{s.group}}</span>
+                </div>
+            </ng-container>
+        </div>
+        <div class='side-menu-item' (click)="section = 'section_styles'"
+            [ngClass]="{'active': section === 'section_styles'}">
+            <div translate>detail_menu_styles</div>
+            <ng-container *ngIf="section == 'section_styles'">
+                <div class='side-menu-subitem' *ngFor="let s of styles" (click)="scrollToId('group_style_'+s.group)">
+                    <span translate>group_style_{{s.group}}</span>
+                </div>
+            </ng-container>
+        </div>
+        <div class='side-menu-item' (click)="section = 'section_example'"
+            [ngClass]="{'active': section === 'section_example'}">
+            <div translate>detail_menu_examples</div>
+        </div>
+        <div class='side-menu-filler'>&nbsp;</div>
+    </div>
+    <div class=' side-content side-content-{{section}}'>
+
+        <div id='widget-detail-overview' class='side-content-main' *ngIf="section == 'section_overview'">
+            <app-widget-detail-overview [widget]="widget"></app-widget-detail-overview>
+            <h3 translate>detail_overview_tools</h3>
+            <ul class='list-unstyled tool-list'>
+                <li>
+                    <button class='btn' (click)='openAccessibilityPage()'
+                        title="{{'detail_accessibility_intro'|translate}}">
+                        <fa-icon [icon]="faUniversalAccess"></fa-icon>&nbsp;
+                        <span translate>detail_accessibility_link</span>
+                    </button>
+                </li>
+                <li>
+                    <a class='btn' routerLink="/tools/widget/configurator"
+                        title="{{'detail_configurator_intro'|translate}}">
+                        <fa-icon [icon]="faWrench"></fa-icon>&nbsp;
+                        <span translate>detail_configurator_link</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div id='widget-detail-params' class='side-content-main' *ngIf="section == 'section_parameters'">
+            <app-widget-detail-params [widget]="widget"></app-widget-detail-params>
+        </div>
+        <div id='widget-detail-styles' class='side-content-main' *ngIf="section == 'section_styles'">
+            <app-widget-detail-styles [widget]="widget"></app-widget-detail-styles>
+        </div>
+        <div id='widget-detail-example' class='side-content-main' *ngIf="section == 'section_example'">
+            <app-widget-detail-example [widget]="widget"></app-widget-detail-example>
+
+        </div>
+        <div class='widget-detail-dynamic-widget-panel'>
+            <div class="card-container">
+                <div class='sticky-notes sticky-notes-widget'>
+                    <span class="sticky-notes-content" translate>detail_note_this_is_the_widget</span>
+                    <span class="sticky-notes-arrow">&rarr;</span>
+                </div>
+                <div class='card'>
+                    <div class='card-body' id="dynamic-widget-container">
+                        <div #container class='dynamic-widget-container'></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container dataset-metadata-card" *ngIf="!widget.getRelatedWidget()">
+                <div class='sticky-notes sticky-notes-widget'>
+                    <span class="sticky-notes-content" translat>detail_note_this_is_the_widget_datastruct</span>
+                    <span class="sticky-notes-arrow">&rarr;</span>
+                </div>
+                <div class='card'>
+                    <div class='card-body'>
+                        <table class='table table-sm table-bordered table-columns' *ngIf="datasetMetadata">
+                            <thead>
+                                <th translate>widget_metadata_column_name</th>
+                                <th translate>widget_metadata_column_alias</th>
+                                <th translate class='slim-column'>widget_metadata_column_type</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of  datasetMetadata.columns">
+                                    <td title='{{c.name}}'><span>{{c.name}}</span></td>
+                                    <td title='{{c.alias}}'><span>{{c.alias}}</span></td>
+                                    <td title='{{c.datatype}}' class='datatype'><span>{{c.datatype}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="yucca-widget yucca-dataset-discrete-table" id="{{widgetId}}" #self>
+    <header *ngIf="widgetTitle || widgetSubtitle" class="yucca-widget-header">
+        {{widgetTitle}}<small>{{widgetSubtitle}}</small>
+    </header>
+    <div class="yucca-widget-intro" *ngIf="widgetIntro!=null">{{widgetIntro}}</div>
+
+    <div class="yucca-widget-chart-content">
+        <section>
+            <div *ngIf="isLoading" class="yucca-dataset-discretebar-table-loading">
+                <div class="yucca-widget-loader">
+                    <div class='spinner'></div>
+                </div>
+            </div>
+            <div class="yucca-widget-chart">
+                <div>
+                    <div id="{{tableId}}" *ngIf='!isLoading'>
+                        <table class='yucca-widget-table' *ngIf='serieColumns.length==1'>
+                            <thead>
+                                <tr>
+                                    <th>{{groupByColumn.label}}</th>
+                                    <th *ngFor='let serie of serieColumns'>{{serie.label}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let row of chartData.data'>
+                                    <td *ngFor='let column of row; index as i'>
+                                        <span *ngIf='i==0'> {{column}}</span>
+                                        <span *ngIf='i>0'> {{column|safeNumber:numberFormat}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class='yucca-widget-table' *ngIf='serieColumns.length>1'>
+                            <thead>
+                                <tr>
+                                    <th>{{groupByColumn.label}}</th>
+                                    <th *ngFor='let serie of transposeData[0]; index as serieIndex'
+                                        [ngStyle]="{'background-color': (highlightSerieIndex == serieIndex) ? '#eee' : 'transparent'}"
+                                        (mouseover)="onMouseover(serie)" (mouseout)="onMouseout(serie)">
+                                        {{serie}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let row of transposeData | slice:1; index as rowIndex'>
+                                    <td>{{chartData.series[rowIndex]}}</td>
+                                    <td *ngFor='let column of row; index as columnIndex'>
+                                        <span>
+                                            {{column|safeNumber:numberFormat}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="yucca-widget-debug" *ngIf="debugMessages.errors.length > 0">
+            Mancano uno o più parametri obbligatori
+        </section>
+        <section class="yucca-widget-debug" *ngIf="debug">
+            <div *ngIf="debugMessages.errors.length > 0">
+                errori:
+                <ul>
+                    <li *ngFor="let m of debugMessages.errors" class="debug-error">{{m}}</li>
+                </ul>
+            </div>
+            <div *ngIf="debugMessages.warnings.length > 0">
+                avvisi:
+                <ul>
+                    <li *ngFor="let m of debugMessages.warnings" class="debug-warning">{{m}}</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer *ngIf="widgetFooter">{{widgetFooter}}</footer>
+</div>

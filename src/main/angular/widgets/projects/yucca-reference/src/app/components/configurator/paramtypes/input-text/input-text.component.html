@@ -1,0 +1,5 @@
+<form>
+    <label for="param_name_{{p.value.name}}">{{'param_name_' + p.value.name|translate}}</label>
+    <input type="text" class="form-control  form-control-sm" placeholder="{{'param_name_' + p.value.name|translate}}"
+        name="param_name_{{p.value.demo}}" [(ngModel)]="value" (blur)="apply()" (keyup.enter)="apply()">
+</form>

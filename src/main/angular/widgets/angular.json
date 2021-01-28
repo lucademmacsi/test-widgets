@@ -1,0 +1,413 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "yucca-widgets": {
+      "projectType": "library",
+      "root": "projects/yucca-widgets",
+      "sourceRoot": "projects/yucca-widgets/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/yucca-widgets/tsconfig.lib.json",
+            "project": "projects/yucca-widgets/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/yucca-widgets/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yucca-widgets/src/test.ts",
+            "tsConfig": "projects/yucca-widgets/tsconfig.spec.json",
+            "karmaConfig": "projects/yucca-widgets/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yucca-widgets/tsconfig.lib.json",
+              "projects/yucca-widgets/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "yucca-elements": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "root": "projects/yucca-elements",
+      "sourceRoot": "projects/yucca-elements/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/yucca-elements",
+            "index": "projects/yucca-elements/src/index.html",
+            "main": "projects/yucca-elements/src/main.ts",
+            "polyfills": "projects/yucca-elements/src/polyfills.ts",
+            "tsConfig": "projects/yucca-elements/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/yucca-elements/src/favicon.ico",
+              "projects/yucca-elements/src/assets"
+            ],
+            "styles": [
+              "projects/yucca-elements/src/styles.sass"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/yucca-elements/src/environments/environment.ts",
+                  "with": "projects/yucca-elements/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "yucca-elements:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "yucca-elements:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "yucca-elements:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yucca-elements/src/test.ts",
+            "polyfills": "projects/yucca-elements/src/polyfills.ts",
+            "tsConfig": "projects/yucca-elements/tsconfig.spec.json",
+            "karmaConfig": "projects/yucca-elements/karma.conf.js",
+            "assets": [
+              "projects/yucca-elements/src/favicon.ico",
+              "projects/yucca-elements/src/assets"
+            ],
+            "styles": [
+              "projects/yucca-elements/src/styles.sass"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yucca-elements/tsconfig.app.json",
+              "projects/yucca-elements/tsconfig.spec.json",
+              "projects/yucca-elements/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/yucca-elements/e2e/protractor.conf.js",
+            "devServerTarget": "yucca-elements:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "yucca-elements:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "yucca-widgets-test": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "root": "projects/yucca-widgets-test",
+      "sourceRoot": "projects/yucca-widgets-test/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/yucca-widgets-test",
+            "index": "projects/yucca-widgets-test/src/index.html",
+            "main": "projects/yucca-widgets-test/src/main.ts",
+            "polyfills": "projects/yucca-widgets-test/src/polyfills.ts",
+            "tsConfig": "projects/yucca-widgets-test/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/yucca-widgets-test/src/favicon.ico",
+              "projects/yucca-widgets-test/src/assets"
+            ],
+            "styles": [
+              "projects/yucca-widgets-test/src/styles.sass"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/yucca-widgets-test/src/environments/environment.ts",
+                  "with": "projects/yucca-widgets-test/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "yucca-widgets-test:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "yucca-widgets-test:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "yucca-widgets-test:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yucca-widgets-test/src/test.ts",
+            "polyfills": "projects/yucca-widgets-test/src/polyfills.ts",
+            "tsConfig": "projects/yucca-widgets-test/tsconfig.spec.json",
+            "karmaConfig": "projects/yucca-widgets-test/karma.conf.js",
+            "assets": [
+              "projects/yucca-widgets-test/src/favicon.ico",
+              "projects/yucca-widgets-test/src/assets"
+            ],
+            "styles": [
+              "projects/yucca-widgets-test/src/styles.sass"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yucca-widgets-test/tsconfig.app.json",
+              "projects/yucca-widgets-test/tsconfig.spec.json",
+              "projects/yucca-widgets-test/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/yucca-widgets-test/e2e/protractor.conf.js",
+            "devServerTarget": "yucca-widgets-test:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "yucca-widgets-test:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "yucca-reference": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "root": "projects/yucca-reference",
+      "sourceRoot": "projects/yucca-reference/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/yucca-reference",
+            "index": "projects/yucca-reference/src/index.html",
+            "main": "projects/yucca-reference/src/main.ts",
+            "polyfills": "projects/yucca-reference/src/polyfills.ts",
+            "tsConfig": "projects/yucca-reference/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/yucca-reference/src/favicon.ico",
+              "projects/yucca-reference/src/assets"
+            ],
+            "styles": [
+              "projects/yucca-reference/src/styles/styles.sass",
+              "node_modules/ngx-toastr/toastr.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/yucca-reference/src/environments/environment.ts",
+                  "with": "projects/yucca-reference/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "yucca-reference:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "yucca-reference:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "yucca-reference:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yucca-reference/src/test.ts",
+            "polyfills": "projects/yucca-reference/src/polyfills.ts",
+            "tsConfig": "projects/yucca-reference/tsconfig.spec.json",
+            "karmaConfig": "projects/yucca-reference/karma.conf.js",
+            "assets": [
+              "projects/yucca-reference/src/favicon.ico",
+              "projects/yucca-reference/src/assets"
+            ],
+            "styles": [
+              "projects/yucca-reference/src/styles.sass",
+              "projects/yucca-reference/src/settings/_variables.sass"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yucca-reference/tsconfig.app.json",
+              "projects/yucca-reference/tsconfig.spec.json",
+              "projects/yucca-reference/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/yucca-reference/e2e/protractor.conf.js",
+            "devServerTarget": "yucca-reference:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "yucca-reference:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "yucca-widgets"
+}

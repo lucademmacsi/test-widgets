@@ -1,0 +1,12 @@
+<aside class="yucca-widget-debug" *ngIf="debug">
+    <ul *ngIf="debugMessages.errors.length > 0">
+        <li *ngFor="let m of debugMessages.errors" class="debug-error" [innerHtml]="m"></li>
+    </ul>
+    <ul *ngIf="debugMessages.warnings.length > 0">
+        <li *ngFor="let m of debugMessages.warnings" class="debug-warning" [innerHtml]="m"></li>
+    </ul>
+    <ul *ngIf="debugMessages.info.length > 0">
+        <li *ngFor="let m of debugMessages.info" class="debug-info" [innerHtml]="m"></li>
+    </ul>
+</aside>
+<footer *ngIf="widgetFooter && debugMessages.errors.length == 0">{{widgetFooter}}</footer>

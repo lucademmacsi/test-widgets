@@ -1,0 +1,76 @@
+.yucca-dataset-dataexplorer-table-pagination{
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+.yucca-dataset-dataexplorer-table-pagination .yucca-dataset-dataexplorer-table-pagination-total{
+    flex-grow: 1;
+    white-space: nowrap;
+}
+
+.yucca-dataset-dataexplorer-table-pagination .yucca-dataset-dataexplorer-table-pagination-controls{
+    display: flex;
+    align-items: center;
+}
+
+.yucca-dataset-dataexplorer-table-pagination .yucca-dataset-dataexplorer-table-pagination-pages{
+    margin:0 1rem;
+}
+
+.yucca-dataset-dataexplorer-table-pagination .yucca-dataset-dataexplorer-table-pagination-btn{
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 1.6rem;
+    line-height: 1rem;
+}
+
+.yucca-dataset-dataexplorer-table-pagination .yucca-dataset-dataexplorer-table-pagination-btn:hover{
+    cursor: pointer;
+}
+
+.yucca-dataset-dataexplorer-table-container{
+    overflow: auto;
+}
+
+.yucca-dataset-dataexplorer-table-table{
+    font-size: 0.7rem;
+    text-align: left;
+    border-collapse: collapse;
+    border-bottom: solid 2px #ccc;
+}
+.yucca-dataset-dataexplorer-table-table th{
+    border-bottom: solid 2px #ccc;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+}
+.yucca-dataset-dataexplorer-table-table td{
+    border-bottom: solid 1px #ccc;
+    padding: .2rem .5rem
+}
+
+.yucca-dataset-dataexplorer-sort-up{
+    transform: rotate(90deg);
+    display: inline-block;
+    margin-left: .4rem;
+    font-size: 1rem;
+    line-height: .7rem;
+}
+
+.yucca-dataset-dataexplorer-sort-down{
+    transform: rotate(-90deg);
+    display: inline-block;
+    margin-left: .5rem;
+    font-size: 1rem;
+    line-height: .7rem;
+}
+
+.subtitle {
+    font-weight: normal;
+    color: grey;
+}
+
+.yucca-dataset-dataexplorer-table-th{
+    cursor: pointer;
+    user-select: none;
+}

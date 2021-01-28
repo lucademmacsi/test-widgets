@@ -1,0 +1,94 @@
+@import '../../../../styles/settings/_variables.sass'
+
+.widget-type
+    img
+        width: 2rem
+        height: auto
+
+.container-side
+    .side-toolbar
+        .side-toolbar-section
+            .side-toolbar-item.config-value-title
+                padding-bottom: 0
+            .form-control
+                border-color: $medium-border
+            .btn-outline-secondary
+                border-color: $medium-border
+            .param_help
+                padding-top: 0
+                padding-bottom: 0
+                color: $color-mute
+                font-size: .6rem
+    .side-content
+        flex-direction: column
+        position: relative
+        padding: 0
+
+.toolbar-configurator
+    .toolbar-item
+        cursor: pointer
+    .toolbar-item:hover
+        background-color: $medium-background
+    .toolbar-dropdown
+        right: 0
+        .toolbar-dropdown-item
+            .text-muted
+                padding-left: 1rem
+    .btn-rename-config
+        color: transparent
+    .rename-config-item
+        white-space: nowrap
+    .rename-config-item:hover
+        .btn-rename-config
+            color: $color-mute
+.help-context-show
+    .help-context-target
+        background-color: $light-background
+    .help-context-item-main
+        position: absolute
+        top: 1rem
+        right: 60%
+        transform: translateX(60%)
+        flex-direction: column
+        max-width: 20rem
+        background-color: white
+        z-index: 101
+    .help-context-item.help-context-item-widget-type
+        top: 50%
+        transform: translateY(-50%)
+        left: calc(100% + 3rem)
+        min-width: 12rem
+    .help-context-item.help-context-item-widget-type::before
+        content: " ← "
+        top: 50%
+        transform: translateY(-50%)
+        right: calc(100% + .5rem)
+    .help-context-item.help-context-item-widget-params
+        top: 50%
+        transform: translateY(-50%)
+        left: calc(100% + 3rem)
+        min-width: 25rem
+    .help-context-item.help-context-item-widget-params::before
+        content: " ← "
+        top: 50%
+        transform: translateY(-50%)
+        right: calc(100% + .5rem)
+    .help-context-item.help-context-item-side-toolbar
+        top: calc(100% + 8rem)
+        right: 1rem
+        min-width: 15rem
+    .help-context-item.help-context-item-side-toolbar::before
+        content: "↑"
+        top: -4rem
+        right: calc(50% - 1rem)
+        transform: translateX(calc(-50% + 1rem))
+
+// .help-context-target:before
+//     content: ""
+//     position: absolute
+//     top: .5rem
+//     left: .5rem
+//     height: calc(100% - 1rem)
+//     width: calc(100% - 1rem)
+//     border: dashed 3px $help-color
+//     display: block

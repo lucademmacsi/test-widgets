@@ -1,0 +1,26 @@
+<h2><span translate>detail_menu_styles</span></h2>
+<p translate>detail_styles_intro</p>
+<div *ngFor="let s of styles" id="group_style_{{s.group}}">
+    <h3><span translate>group_style_{{s.group}}</span> <strong *ngIf="s.group=='specific'"
+            translate>{{widget.key}}_title</strong></h3>
+    <p><small translate>group_style_{{s.group}}_intro</small></p>
+    <table class="table table-sm table-bordered table-styles">
+        <tbody>
+            <tr *ngFor="let item of s.styles | keyvalue">
+                <td>
+                    <span *ngIf="s.group!='specific'" class="style_name" translate>style_name_{{item.value.name}}</span>
+                    <span *ngIf="s.group=='specific'" class="style_name"
+                        translate>style_name_{{item.value.name}}_{{widget.key}}</span>
+                </td>
+                <td>
+                    <div *ngIf="s.group!='specific'" class="style_help"
+                        [innerHtml]="'style_help_' + item.value.name|translate"></div>
+                    <div *ngIf="s.group=='specific'" class="style_help"
+                        [innerHtml]="'style_help_' + item.value.name +'_' + widget.key|translate"></div>
+                </td>
+                <td><span class="style_selector code" [innerHtml]="formatCssSelector(item.value.selector)"></span>
+                <td><span class="style_example code" [innerHtml]="formatCssValues(item.value.example)"></span>
+            </tr>
+        </tbody>
+    </table>
+</div>

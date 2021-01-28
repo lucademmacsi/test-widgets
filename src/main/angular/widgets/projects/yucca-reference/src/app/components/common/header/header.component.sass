@@ -1,0 +1,102 @@
+@import '../../../../styles/settings/_variables.sass'
+
+.navbar-home
+    background-color: #ededed
+
+.navbar
+    border-bottom: none
+    padding: 0
+
+.nav-item
+    font-weight: bold
+    color: black
+    margin-right: 1rem
+
+.nav-item:hover a.nav-link
+    color: $body-color
+    box-shadow: 0px 3px 0px $body-color
+a.dropdown-item:hover
+    color: $body-color
+    background-color: $medium-background
+    cursor: pointer
+
+.nav-item .active
+    font-weight: bold
+    box-shadow: 0px 3px 0px $body-color    
+
+.logout-item
+    cursor: pointer
+    color: $body-color
+    text-decoration: none
+    margin-top: 5px
+
+.area-list
+    list-style-type: none
+
+.user-dropdown
+    font-weight: bold
+    color: $body-color
+    
+.user-dropdown:hover
+    text-decoration: none
+    box-shadow: 0px 3px 0px $body-color
+
+.user-dropdown-list
+    font-size: .8rem
+
+.user-dropdown-item
+    color: $body-color
+    cursor: pointer
+    text-decoration: none
+    font-weight: normal
+
+.dropdown-item:active 
+    background-color: $medium-background
+
+.right-align
+    text-align: right
+    display: inline-block
+
+.navbar-brand
+    display: flex
+    align-items: center
+    margin: 0 5rem 0 2rem
+    a
+        font-weight: bold
+        display: inline-block
+        color: $body-color
+        padding-left: .5rem
+
+hr
+    margin-top: 0
+    border-color: #00000029
+
+div.right-align
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+.auth-panel
+    .user-icon
+        padding-right: $spacer/2
+    a
+        font-size: .8rem
+:host-context(#home)
+    .nav-link
+        color: white
+    .nav-link:hover
+        color: white
+    hr
+        border-color: white
+        margin-bottom: 1rem
+    .auth-panel
+        a
+            color: white
+
+.yucca-logo
+    height: 2rem
+    width: auto
+
+.dashboard-logo
+    height: 3rem
+    width: auto

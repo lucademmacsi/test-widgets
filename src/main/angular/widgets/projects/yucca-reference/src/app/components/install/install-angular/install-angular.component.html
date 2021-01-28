@@ -1,0 +1,29 @@
+<h2><span translate>install_angular_title</span></h2>
+<p [innerHtml]="'install_angular_intro'|translate"></p>
+<h5>Angular CLI</h5>
+<p [innerHtml]="'install_angular_angularcli_intro'|translate"></p>
+<code class='code-panel'>ng add yucca-angular-widget</code>
+
+<h5>npm</h5>
+<p [innerHtml]="'install_angular_npm_intro'|translate"></p>
+<code class='code-panel'>npm add yucca-angular-widget --save</code>
+<p>&nbsp;</p>
+<h2><span translate>setup_angular_title</span></h2>
+<p [innerHtml]="'setup_angular_intro'|translate"></p>
+<code class='code-panel'><pre>
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; NgModule &#125; from '@angular/core';
+
+import &#123; AppComponent &#125; from './app.component';
+import &#123; <em>YuccaWidgetsModule</em> &#125; from <em>'@yucca/yucca-widgets'</em>;
+
+@NgModule(&#123;
+imports: [
+    BrowserModule,
+    <em>YuccaWidgetsModule</em>
+],
+declarations: [AppComponent],
+bootstrap: [AppComponent]
+&#125;)
+export class AppModule &#123; &#125;    
+</pre></code>

@@ -1,0 +1,26 @@
+{
+  "name": "@afranceschetti/ngx-yucca-widgets",
+  "version": "1.0.9",
+  "description": "Yucca Widget Angular Elements ",
+  "peerDependencies": {
+    "@angular/common": "^9.1.12",
+    "@angular/core": "^9.1.12"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0",
+    "c3": "^0.7.20",
+    "d3-sankey": "^0.12.3"
+  },
+  "keywords": [
+    "yucca",
+    "widgets"
+  ],
+  "author": "Regione Piemonte",
+  "license": "EUPL-1.2",
+  "files": [
+    "./dist"
+  ],
+  "repository": {
+    "url": "git://github.com/afranceschetti/test-publish-npm-ng.git"
+  }
+}

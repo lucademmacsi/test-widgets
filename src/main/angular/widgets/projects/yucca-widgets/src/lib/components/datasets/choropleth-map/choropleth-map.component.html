@@ -1,0 +1,17 @@
+<div class="yucca-widget yucca-dataset-choropleth-map" id="{{widgetId}}" #self>
+    <a (click)="downloadData()" aria-label='Download csv'></a>
+    <yucca-widget-header [widgetTitle]="widgetTitle" [widgetSubtitle]="widgetSubtitle" [widgetIntro]="widgetIntro">
+    </yucca-widget-header>
+    <div class="yucca-widget-chart-content" [ngStyle]="{'height': widgetHeight + 'px', 'width': widgetWidth + 'px'}">
+        <div *ngIf="isLoading" class="yucca-widget-loader">
+            <div class='spinner'></div>
+        </div>
+        <div class="info-panel" *ngIf="info.show">
+			<span [innerHTML]="info.content"></span>
+        </div>
+		<div class="yucca-widget-chart"><svg></svg></div>
+        <div *ngIf="infoMessage" class='yucca-widget-info-message'>{{infoMessage}}</div>
+    </div>
+    <yucca-widget-footer [widgetFooter]="widgetFooter" [debugMessages]="debugMessages" [debug]="debug">
+    </yucca-widget-footer>
+</div>

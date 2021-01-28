@@ -1,0 +1,75 @@
+<nav id="top" class="navbar navbar-expand-lg navbar-light" [ngClass]="{'navbar-home': this.router.url == '/'}">
+    <div class="navbar-brand">
+        <img class="yucca-logo" alt="yucca logo" src="assets/images/header/logo_header.png">&nbsp;
+        <a class="" routerLink='/' *ngIf="showMenu()">Dashboard</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        *ngIf="showMenu()" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showMenu()">
+
+        <ul class="navbar-nav" *ngIf="this.router.url != '/'">
+            <li class="nav-item box-underline">
+                <a class="nav-link custom-underline" routerLink='/install' routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }" translate>main_menu_install<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item box-underline">
+                <a class="nav-link custom-underline" routerLink='/widgets' routerLinkActive="active"
+                    translate>main_menu_widgets<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown box-underline" ngbDropdown>
+                <div class="custom-underline">
+                    <a class="nav-link dropdown-toggle" ngbDropdownToggle id="navbarDropdownTools" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" translate
+                        [ngClass]="{'active': rlRef.isActive}">
+                        main_menu_tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownTools" ngbDropdownMenu>
+                        <a class="dropdown-item" routerLink="/tools/widget/configurator" routerLinkActive="active"
+                            #rlRef="routerLinkActive" translate ngbDropdownItem>main_menu_tools_widget_configurator</a>
+                        <a class="dropdown-item" routerLink="/tools/widget/composer" routerLinkActive="active"
+                            #rlRef="routerLinkActive" translate ngbDropdownItem>main_menu_tools_widget_composer</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <div class="nav-item" ngbDropdown>
+                <a class="nav-link dropdown-toggle user-dropdown" ngbDropdownToggle id="langDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span *ngIf="!translate.currentLang">{{translate.defaultLang}}</span>{{translate.currentLang}} 
+                </a>
+                <ul class="dropdown-menu px-3 user-dropdown-list" ngbDropdownMenu aria-labelledby="langDropdown">
+                    <li *ngFor="let lang of translate.getLangs()" class="pb-1" (click)="changeLang(lang)" class="user-dropdown-item" ngbDropdownItem>
+                        <a > {{ lang }} </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-item" ngbDropdown>
+                <a class="nav-link dropdown-toggle user-dropdown" ngbDropdownToggle id="dropdownBasic1" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{currentUser.user.username}} <span *ngIf="selectedArea != ''">| {{selectedArea}}</span>
+                </a>
+                <div class="dropdown-menu px-3 user-dropdown-list dropdown-menu-right" ngbDropdownMenu
+                    aria-labelledby="dropdownBasic1">
+                    <p class="pb-2 border-bottom">{{currentUser.user.firstname}} {{currentUser.user.lastname}}</p>
+                    <p class="mb-1" translate>main_menu_user_work_areas</p>
+                    <ul class="area-list pl-0 pb-2 border-bottom">
+                        <li *ngFor="let area of currentUser.user.tenants" class="pb-1" ngbDropdownItem>
+                            <a class="user-dropdown-item">
+                                <fa-icon [icon]="faCheck" *ngIf="area.name == selectedArea"></fa-icon> {{area.name}}
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="logout-item" translate
+                        href="https://int-userportal.smartdatanet.it/userportal/api/authorize?logout=userTest&returnUrl=%23%2Flanding">
+                        <fa-icon [icon]="faSignOutAlt"></fa-icon> main_menu_user_logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<hr *ngIf="this.router.url != '/'">

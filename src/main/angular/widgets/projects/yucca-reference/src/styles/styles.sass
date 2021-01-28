@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&&family=Patrick+Hand&display=swap')
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap'
+@import './settings/_variables.sass'
+@import '../../../yucca-widgets/src/assets/styles/yucca-widget.css'
+
+body
+    font-size: 14px
+    font-family: 'Open Sans', sans-serif
+
+app-root
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    min-height: 100vh
+a
+    color: $a-color
+
+h1,h2,h3,h4,h5,h6
+    font-weight: 700
+h2
+    font-size: 1.6rem
+h3
+    font-size: 1.2rem
+h4
+    font-size: 1.1rem
+h5
+    font-size: 1rem
+
+hr
+    margin-bottom: 0
+em
+    font-weight: 700
+    font-style: normal
+    color: #000
+    background-color: $secondary
+    padding: 0
+    display: inline-block
+    line-height: 1.2em
+
+.btn-help
+    color: $help-color
+
+.btn-group-xs > .btn, .btn-xs
+    padding: .4rem .4rem
+    font-size: .875rem
+    line-height: .5
+    border-radius: .2rem
+
+.form-inline
+    label
+        margin-right: 1.5rem
+.yucca-loading
+    text-align: center
+    width: 100%
+.yucca-loading:before
+    content: " "
+    display: inline-block
+    border: 12px solid #e3e3e3
+    border-top: 12px solid #333
+    border-radius: 50%
+    width: 60px
+    height: 60px
+    animation: spin 2s linear infinite
+
+ng-component 
+    width: 100%
+
+.input-group-append
+    .btn-default
+        border-color: $input-border-color
+        background-color: $light-background
+
+.panel-flex
+    display: flex
+.text-muted-light
+    color: $color-mute-light
+.card
+    box-shadow: $box-shadow
+.card-compact
+    overflow: hidden
+    border: none
+    .card-title
+        background: $medium-border
+        padding: .5rem
+        font-weight: bold
+        display: flex
+        .card-title-text
+            flex-grow: 1
+    .card-body
+        padding: .5rem
+
+.copy-clipboard
+    font-size: .7rem
+    background-color: #bbb
+    color: white
+    font-family: monospace
+    border-radius: 2px
+    padding: 1px 6px
+    font-weight: normal
+    letter-spacing: 1px
+    box-shadow: $box-shadow
+.copy-clipboard:hover
+    cursor: pointer
+    background-color: #999
+
+.tab-bar
+    display: flex
+    .tab-bar-item
+        border-bottom: solid 1px $primary
+    .tab-bar-item
+        a
+            display: block
+            padding: 0.5rem 1rem
+            // border-bottom: solid 3px transparent
+            color: $color-mute
+        a.active,a:hover
+            cursor: pointer
+            text-decoration: none
+            text-shadow: .5px 0 0 $primary
+            color: $primary
+            // border-bottom: solid 3px $primary
+            box-shadow: 0px 3px 0px #00bbf0
+            margin-bottom: 2px
+    .tab-bar-filler
+        flex-grow: 1
+        border-bottom: solid 1px $primary
+
+.toolbar
+    display: flex
+    border: solid $medium-border
+    .toolbar-item
+        padding: .5rem 1rem
+        border-right: 1px solid $medium-border
+        position: relative
+    .toolbar-dropdown
+        text-align: left
+        position: absolute
+        top: 100%
+        background: $light-background
+        border-bottom-left-radius: 4px
+        border-bottom-right-radius: 4px
+        border: solid 1px $medium-border
+        box-shadow: $box-shadow
+    .toolbar-dropdown-item
+        padding: .2rem .5rem
+        white-space: nowrap
+        display: flex
+        justify-content: space-between
+        cursor: pointer
+    .toolbar-dropdown-item:hover
+        background-color: $medium-background
+    .toolbar-dropdown-title
+        padding: .2rem .5rem
+        font-weight: bold
+        color: $color-mute
+    .toolbar-dropdown-separator
+        border-bottom: solid 1px $medium-border
+.side-menu-scroll-top
+    position: fixed
+    bottom: 1rem
+    left: 1rem
+    color: $primary
+    cursor: pointer
+    border-radius: 4px
+    padding: .2rem .5rem
+    background-color: $light-background
+.container-side
+    display: flex
+    .side-menu
+        display: flex
+        flex-direction: column
+        h1
+            padding: .5rem 1rem
+            margin: 0
+            font-size: 1.2rem
+            font-weight: 700
+            border-bottom: 1px $light-border solid
+            border-right: 1px $light-border solid
+            background-color: $light-background
+        .side-menu-item
+            background-color: $light-background
+            padding: .5rem 1rem
+            border-bottom: 1px $light-border solid
+            border-right: 1px $light-border solid
+            white-space: nowrap
+        .side-menu-item:hover, .side-menu-item.active
+            background-color: #fff
+            cursor: pointer
+            color: $body-color
+            text-shadow: .7px 0 0 $body-color
+            border-right: 1px solid transparent
+        .side-menu-subitem
+            padding: .5rem 1.2rem
+            white-space: nowrap
+            text-shadow: none
+        .side-menu-item-indent-1
+            padding-left: 2rem
+        .side-menu-section-title
+            padding: .5rem 1rem
+            font-weight: bold
+            background-color: $light-background
+            border-right: 1px $light-border solid
+            border-bottom: 1px $light-border solid
+        .side-menu-filler
+            background-color: $light-background
+            border-right: 1px $light-border solid
+            flex-grow: 1
+    .side-toolbar
+        display: flex
+        flex-direction: column
+        background-color: $light-background
+        border-right: 1px $light-border solid
+        h1
+            font-size: 1.2rem
+            padding: 1rem
+            border-bottom: solid 1px $grey-border
+            white-space: nowrap
+        .side-toolbar-section
+            border-bottom: solid 1px $grey-border
+            h2
+                background-color: $light-background
+                padding: .5rem 1rem
+                margin: 0
+                font-size: 1rem
+                font-weight: 700
+            .side-toolbar-item
+                display: flex
+                padding: .5rem 1rem
+                align-content: center
+                align-items: center
+                .side-toolbar-item-main
+                    flex-grow: 1
+                    padding-right: 1rem
+                .side-toolbar-button
+                    border: solid 1px $medium-border
+                    border-radius: 4px
+                    background: #fff
+            .side-toolbar-item-carousel
+                background-color: $medium-background
+                padding: 0.1rem 1rem
+                font-size: .9rem
+                .btn
+                    padding-top: 0
+                    padding-bottom: 0
+            .side-toolbar-carousel-body
+                font-size: .8rem
+        .side-toolbar-filler
+            flex-grow: 1
+
+    .side-content
+        display: flex
+        flex-grow: 1
+        padding: 1rem
+        min-height: 90vh
+        overflow: hidden
+        clear: both
+        .toolbar
+            display: flex
+            justify-content: flex-end
+            border: none
+            .toolbar-filler
+                flex-grow: 1
+            .toolbar-right
+                background-color: $light-background
+                box-shadow: $box-shadow
+                border-width: 0px 0 1px 1px
+                display: flex
+                border-bottom-left-radius: 4px
+        .side-content-main
+            padding: 1rem
+
+.modal-header
+    padding: .5rem
+    .close
+        padding: 0
+        margin: 0
+        outline: none
+.modal-body
+    padding: .5rem
+.modal-footer
+    padding: .5rem
+
+.empty-panel-message
+    color: $color-mute-light
+    text-align: center
+    padding: 5% 8%
+    font-size: 1.5vw
+    width: 100%
+    h1
+        font-weight: bold
+        font-size: 5vw
+        margin-bottom: .5em
+// code
+.help-warning
+    font-weight: bold
+.help-warning:before
+    content: "⚠ "
+    color: #ffc11e
+    font-size: 1.2em
+    line-height: 1em
+.param_exclusive_icon
+    font-size: 1.6em
+    line-height: 1em
+    font-weight: bold
+    color: #333
+.help-code
+    color: black
+    font-weight: bold
+.code
+    font-family: monospace
+    .intent-1
+        padding-left: .5rem
+    .intent-2
+        padding-left: 1rem
+    .html-tag
+        color: #60a917
+        font-weight: bold
+    .html-attr
+        color: #d80073
+    .html-attr-value
+        color: #0050ef
+    .js-char
+        font-weight: bold
+    .js-reserved-word
+        color: #9f179d
+        font-weight: bold
+    .js-dom
+        color: #c2ae00
+    .js-function
+        color: #f0a30a
+    .js-field
+        color: #333
+    .js-field-attr
+        color: #1469ca
+    .js-attr
+        color: #4400a3
+        font-weight: bold
+    .js-attr-value
+        color: #4ea04d
+        font-weight: bold
+    .js-attr-number
+        color: #0050ef
+        font-weight: bold
+    .css-selector-id
+        color: #006d6c
+    .css-selector-class
+        color: #00aba9
+    .css-selector-tag
+        color: #00aba9
+        font-weight: bold
+    .css-attr
+        color: #d80073
+    .css-attr-value
+        color: #0050ef
+
+// sticky notes
+.sticky-notes
+    font-family: 'Patrick Hand', cursive
+    font-size: 1.6rem
+    color: #bbb
+    padding: 1.8rem
+.sticky-notes-arrow
+
+.two-panel-container
+    display: flex
+
+.install-overview-card-container
+    display: flex
+    margin: 1rem
+    .card-compact
+        margin: 1rem
+
+.getting-started
+    h5
+        margin-top: 2rem
+    code
+        color: $body-color
+    .code-panel
+        padding: .5rem 1rem
+        border-radius: 4px
+        background-color: $medium-background
+        display: block
+        margin: .2rem
+        font-size: 1rem
+        .html-comment
+            color: #999
+        .js-comment
+            color: #999
+            em
+                background-color: lighten($primary,50%)
+                color: #bbb
+                font-weight: 400
+
+        em
+            font-style: normal
+            padding: 0 .2rem
+            color: $body-color
+            background-color: lighten($primary,30%)
+        .em0
+            color: $body-color
+            font-weight: 700
+            background-color: lighten($primary,10%)
+        .em1
+            color: $body-color
+            font-weight: 700
+            background-color: lighten($primary,40%)
+        .em2
+            color: $body-color
+            font-weight: 700
+            background-color: lighten($secondary,2%)
+        .em3
+            color: $body-color
+            font-weight: 700
+            background-color: lighten($secondary,40%)
+
+.scrolling-wrapper
+    overflow-x: scroll
+    overflow-y: hidden
+    white-space: nowrap
+
+    .to-scroll
+        display: inline-block
+
+.help-context-button
+    z-index: 200
+.help-context-overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: $help-color-overlay
+    z-index: 100
+.help-context-item-main
+    border-width: 8px!important
+.help-context-item
+    display: none
+.help-context-show
+    .help-context-target
+        position: relative
+        z-index: 110
+        border-radius: .2rem
+        margin: .2rem
+        padding: .2rem
+        border: solid 2px $help-color!important
+    .help-context-item
+        display: block
+        background: white
+        padding: .5rem
+        border: solid 2px $help-color
+        position: absolute
+        font-size: .8rem
+        background-color: white
+        border-radius: 32px
+        display: flex
+        align-items: center
+        align-content: center
+        text-align: center
+    .help-context-item::before
+        position: absolute
+        font-weight: bold
+        color: $help-color
+        line-height: 0
+        font-size: 2rem
+
+.badge-help
+    background: lighten($help-badge-color, 30%)
+    border: solid 2px darken($help-badge-color,50%)
+    color: darken($help-badge-color,50%)
+    font-family: monospace
+    font-weight: bold
+    width: 1.4em
+    height: 1.4em
+    border-radius: 50%
+    display: inline-flex
+    align-items: center
+    justify-content: center
+
+.badge-help-inline
+    font-size: .8em
+
+.badge-help-incard
+    font-size: 1.2em
+    border-width: 2px
+    position: absolute
+    top: -.2em
+    left: -.2em
+
+.help-context-item.help-context-item-side-toolbar
+    strong
+        padding: 0 2rem 1rem 2rem
+        display: block
+    ul
+        text-align: left
+        list-style-type: circle
+        padding-left: 1rem
+        margin-bottom: 0
+        li
+            padding: .5rem 0

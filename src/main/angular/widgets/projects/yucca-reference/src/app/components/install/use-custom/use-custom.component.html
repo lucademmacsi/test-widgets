@@ -1,0 +1,102 @@
+<h2><span translate>use_custom_title</span></h2>
+<p [innerHtml]="'use_custom_intro'|translate"></p>
+<h5 translate>use_custom_parameters_title</h5>
+<p [innerHtml]="'use_custom_parameters_content'|translate"></p>
+<div class='two-panel-container'>
+    <div>
+        <h5><strong><code>htdocs/scripts/script.js</code></strong></h5>
+
+        <code class='code-panel'><pre><span class='js-comment'>// On documnet ready</span>
+...
+<span class='js-comment'>// prepare the value</span>
+<strong>const</strong> datasetcode = 'NobelPrizeByWinner_9081';
+<strong>const</strong> widgetTitle = 'Nobel Prize';
+<strong>const</strong> numberFormat = this.numberFormat = &#123;isEuro: true&#125;
+    
+
+<span class='js-comment'>// create the custom element</span>
+<strong>let</strong> <span class='em2'>discreteBarWidget</span> = document.createElement('yucca-discretebar-chart');
+discreteBarWidget.datasetcode=datasetcode;
+discreteBarWidget.widgetTitle=widgetTitle;
+discreteBarWidget.numberFormat =numberFormat;
+
+<span class='js-comment'>// insert in the page</span>
+document.getElementById("<em>discreteBarContainerId</em>").appendChild(<span class='em2'>discreteBarWidget</span>);
+        </pre></code>
+    </div>
+    <div>
+        <h5><code>htdocs/page.html</code></h5>
+        <code class='code-panel'><pre> <span class='html-comment'>&#60;!-- some content --&#62;</span>
+
+ &#60;div id="<em>discreteBarContainerId</em>"&#60;/div&#62;
+
+<span class='html-comment'>&#60;!-- other content --&#62;</span></pre></code>
+    </div>
+
+</div>
+<h5 translate>use_custom_events_title</h5>
+<p [innerHtml]="'use_custom_events_content'|translate"></p>
+<div class='two-panel-container'>
+    <div>
+        <h5><strong><code>htdocs/scripts/script.js</code></strong></h5>
+
+        <code class='code-panel'><pre>...
+<span class='js-comment'>// filter year</span>
+<strong>const</strong> filterYearVC = [&#123;"label":"2019","filter":"(2019 eq year)"&#125;,
+                      &#123;"label":"2020","filter":"(2020 eq year)"&#125;];
+<strong>const</strong> filterYearEventControlId = "<span class='em0'>yearControleventId</span>";
+<strong>let</strong> filterYear = document.createElement('yucca-control-filter-data');
+filterYear.valueColumns=filterYearVC;
+filterYear.widgetId=filterYearEventControlId;
+document.getElementById("filterYearContainerId").appendChild(filterYear);
+
+<span class='js-comment'>// filter country</span>
+<strong>const</strong> filterCountryVC = [&#123;"label":"Italy","filter":"('IT' eq country)"&#125;,
+                         &#123;"label":"Japan","filter":"('JP' eq country)"&#125;];
+<strong>const</strong> filterCountryEventControlId = "<span class='em2'>countryControleventId</span>";
+<strong>let</strong> filterCountry = document.createElement('yucca-control-filter-data');
+filterCountry.valueColumns=filterCountryVC;
+filterCountry.widgetId=filterCountryEventControlId;
+document.getElementById("filterCountryContainerId").appendChild(filterCountry);
+
+<span class='js-comment'>// widget one</span>
+<strong>const</strong> datasetcodeOne = 'NobelPrizeByWinner_9081'
+...
+<strong>let</strong> widgetOne = document.createElement('yucca-discrete-table');
+widgetOne.datasetcode=datasetcodeOne;
+...
+document.getElementById("widgetOneContainerId").appendChild(widgetOne);
+
+<span class='js-comment'>// widget  two</span>
+<strong>const</strong> datasetcodeTwo = 'TokyoUniversityStudents_9796'
+<strong>const</strong> acceptedControlEventIdTwo = ["<span class='em0'>yearControleventId</span>"]
+...
+<strong>let</strong> widgetTwo = document.createElement('yucca-discrete-table');
+widgetTwo.datasetcode=datasetcodeTwo;
+widgetTwo.acceptedControlEventId = acceptedControlEventIdTwo;
+...
+document.getElementById("widgetTwoContainerId").appendChild(widgetTwo);
+
+        </pre></code>
+    </div>
+    <div>
+        <h5><code>htdocs/page.html</code></h5>
+        <code class='code-panel'><pre> <span class='html-comment'>&#60;!-- some content --&#62;</span>
+<span class='html-comment'>&#60;!-- <span class='em0'>year control</span> --&#62;</span>
+ &#60;div id="filterYearContainerId"&#60;/div&#62;
+
+<span class='html-comment'>&#60;!-- <span class='em2'>country control</span> --&#62;</span>
+ &#60;div id="filterCountryContainerId"&#60;/div&#62;
+
+<span class='html-comment'>&#60;!-- widget one 
+    this widget listen all events --&#62;</span>
+ &#60;div id="widgetOneContainerId"&#60;/div&#62;
+
+<span class='html-comment'>&#60;!-- widget two 
+    <span class='em0'>this widget listen only year events</span> --&#62;</span>
+ &#60;div id="widgetTwoContainerId"&#60;/div&#62;
+
+<span class='html-comment'>&#60;!-- other content --&#62;</span></pre></code>
+    </div>
+
+</div>

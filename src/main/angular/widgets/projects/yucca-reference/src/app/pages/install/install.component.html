@@ -1,0 +1,46 @@
+<div class="container-side getting-started" id="install_page">
+    <div class='side-menu'>
+        <h1><span translate>page_install_main_title</span></h1>
+        <div class='side-menu-item' label="Overview" (click)="section = 'section_overview'"
+            [ngClass]="{'active': section === 'section_overview'}">
+            <div translate>page_install_menu_overview</div>
+        </div>
+        <div class='side-menu-section-title'><strong translate>page_install_menu_install</strong></div>
+        <div class='side-menu-item side-menu-item-indent-1 ' (click)="section = 'section_install_angular'"
+            [ngClass]="{'active': section === 'section_install_angular'}">
+            <div translate>page_install_menu_install_angular</div>
+        </div>
+        <div class='side-menu-item  side-menu-item-indent-1' (click)="section = 'section_install_custom'"
+            [ngClass]="{'active': section === 'section_install_custom'}">
+            <div translate>page_install_menu_install_custom</div>
+        </div>
+        <div class='side-menu-section-title'><strong translate>page_install_menu_use</strong></div>
+        <div class='side-menu-item side-menu-item-indent-1 ' (click)="section = 'section_use_angular'"
+            [ngClass]="{'active': section === 'section_install_angular'}">
+            <div translate>page_install_menu_use_angular</div>
+        </div>
+        <div class='side-menu-item  side-menu-item-indent-1' (click)="section = 'section_use_custom'"
+            [ngClass]="{'active': section === 'section_install_custom'}">
+            <div translate>page_install_menu_use_custom</div>
+        </div>
+        <div class='side-menu-filler'>&nbsp;</div>
+    </div>
+    <div class=' side-content side-content-{{section}}'>
+        <div class='side-content-main' *ngIf="section == 'section_overview'">
+            <h2 translate>page_install_overview_main_title</h2>
+            <p [innerHtml]="'page_install_overview_intro'|translate"></p>
+        </div>
+        <div class='side-content-main' *ngIf="section == 'section_install_angular'">
+            <app-widget-install-angular></app-widget-install-angular>
+        </div>
+        <div class='side-content-main' *ngIf="section == 'section_install_custom'">
+            <app-widget-install-custom></app-widget-install-custom>
+        </div>
+        <div class='side-content-main' *ngIf="section == 'section_use_angular'">
+            <app-widget-use-angular></app-widget-use-angular>
+        </div>
+        <div class='side-content-main' *ngIf="section == 'section_use_custom'">
+            <app-widget-use-custom></app-widget-use-custom>
+        </div>
+    </div>
+</div>

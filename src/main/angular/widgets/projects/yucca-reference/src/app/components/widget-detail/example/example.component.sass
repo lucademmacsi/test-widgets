@@ -1,0 +1,94 @@
+.card-container
+    position: relative
+    margin-bottom: 1rem
+
+.dataexplorer-card
+    display: block
+
+.card-container-example
+    position: relative
+    margin-bottom: 1rem
+    margin-right: 8rem
+    margin-left: .5rem
+
+    .sticky-notes-example
+        display: flex
+        flex-direction: column
+        align-items: left
+        position: absolute
+        width: 7rem
+        right: -8rem
+        line-height: 1.2em
+        text-align: center
+        padding: 0
+    .sticky-notes-angular-html
+        top: .2em
+        .sticky-notes-arrow
+            transform: rotate(135deg)
+            transform-origin: 40% 30%
+            width: 5em
+    .sticky-notes-angular-ts
+        top: 1em
+        .sticky-notes-arrow
+            transform: rotate(40deg)
+            transform-origin: 25% 30%
+            width: 3em
+    .sticky-notes-custom-html
+        top: .2em
+        width: 10rem
+        right: -11rem
+        .sticky-notes-arrow
+            transform: rotate(75deg)
+            transform-origin: 10% 45%
+            width: 5em
+            text-align: left
+    .sticky-notes-custom-js
+        top: 1em
+        right: -8.5rem
+        .sticky-notes-arrow
+            transform: rotate(40deg)
+            transform-origin: 25% 30%
+            width: 3em
+    .sticky-notes-dataexplorer
+        display: flex
+        flex-direction: column
+        align-items: left
+        position: absolute
+        width: 7rem
+        right: -8rem
+        line-height: 1.2em
+        text-align: center
+        padding: 0
+        .sticky-notes-arrow
+            transform: rotate(40deg)
+            transform-origin: 50% 30%
+            width: 3em
+
+.tab-bar
+    margin-bottom: 1rem
+
+.yucca-dataset-dataexplorer-table-table
+    td
+        white-space: nowrap
+
+::ng-deep .widget-data-panel
+    .yucca-dataset-dataexplorer-table-table
+        td
+            white-space: nowrap
+    .yuccaa-widget
+        padding: 0
+        .yucca-widget-table-content
+            padding: 0
+            margin: 0
+            .yucca-widget-table
+                background-color: transparent
+                overflow-x: auto
+                table-layout: fixed
+                max-width: 450px
+                th
+                    a
+                        white-space: nowrap
+                        overflow: hidden
+                        text-overflow: ellipsis
+                        max-width: 6em
+                        display: block

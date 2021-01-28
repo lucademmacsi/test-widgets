@@ -1,0 +1,156 @@
+<div class='help-context-overlay' *ngIf="showHelp">
+</div>
+<div class="container-side" [ngClass]="{'help-context-show': showHelp}">
+    <div class="side-toolbar" id="side-toolbar-top">
+        <h1><span translate>widget_configurator_title</span></h1>
+        <div class="side-toolbar-section help-context-target">
+            <div class="side-toolbar-item">
+                <div class="side-toolbar-item-main">
+                    <span translate *ngIf="!w">widget_configurator_widget_type_empty</span>
+                    <div class='widget-type' *ngIf="w">
+                        <img src=" assets/images/widgets/dataset/{{w.key}}.png" class="card-img-top">
+                        <span>{{w.key + '_title'|translate}}</span>
+                    </div>
+                </div>
+                <button class="side-toolbar-button" (click)="openChooseWidgetType()">&hellip;</button>
+            </div>
+            <div class='help-context-item help-context-item-widget-type'><span
+                    class='badge-help badge-help-incard'>1</span><span
+                    translate>widget_configurator_help_context_widget_type</span></div>
+        </div>
+        <div class="help-context-target side-toolbar-filler">
+            <div class="tab-bar example-tab-bar" *ngIf="w || showHelp">
+                <div class="tab-bar-item">
+                    <a (click)="configTab = 'params'" [ngClass]="{'active': configTab === 'params'}"
+                        translate>detail_menu_parameters</a>
+                </div>
+                <div class="tab-bar-item">
+                    <a (click)="configTab = 'styles'" [ngClass]="{'active': configTab === 'styles'}"
+                        translate>detail_menu_styles</a>
+                </div>
+                <div class="tab-bar-filler">&nbsp;</div>
+            </div>
+            <div *ngIf="w &&  configTab === 'params'">
+                <div *ngFor="let s of params" id="group_param_{{s.group}}" class="side-toolbar-section">
+                    <div class="side-toolbar-item side-toolbar-item-carousel">
+                        <div class="side-toolbar-item-main">
+                            <span translate>group_param_{{s.group}}</span>
+                            <strong *ngIf="s.group=='specific'" translate>{{w.key}}_title</strong>
+                        </div>
+                        <button class="btn" *ngIf="!s.open" (click)="s.open = true">
+                            <fa-icon [icon]="faAngleDown"></fa-icon>
+                        </button>
+                        <button class="btn" *ngIf="s.open" (click)="s.open = false">
+                            <fa-icon [icon]="faAngleUp"></fa-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="s.open" class="side-toolbar-carousel-body">
+                        <div *ngFor="let p of s.params | keyvalue">
+                            <div class="side-toolbar-item config-value-title">
+                                <div class="side-toolbar-item-main">
+                                    <strong>{{p.value.name}}</strong>
+                                </div>
+                            </div>
+                            <div class="side-toolbar-item config-value-value">
+                                <div class="input-group  input-group-sm">
+                                    <input type="text" class="form-control" disabled="disabled"
+                                        [ngClass]="{'font-italic font-weight-light': !p.value.demo}"
+                                        [value]="p.value.demo?p.value.demo:'widget_configurator_widget_param_empty'|translate">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary"
+                                            (click)="openParamDialog(w, s, p)">&hellip;</button>
+                                        <button class="btn btn-outline-secondary" *ngIf="!p.help" (click)="p.help=true">
+                                            &#63;
+                                        </button>
+                                        <button class="btn btn-outline-secondary" *ngIf="p.help" (click)="p.help=false">
+                                            &#63;
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='side-toolbar-item param_help' *ngIf="p.help">
+                                <div *ngIf="s.group!='specific'" [innerHtml]="'param_help_' + p.value.name|translate">
+                                </div>
+                                <div *ngIf="s.group=='specific'"
+                                    [innerHtml]="'param_help_' + p.value.name +'_' + w.key|translate"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-toolbar-section" *ngIf="!w &&  configTab === 'styles'">
+                <div class="side-toolbar-item">
+                </div>
+            </div>
+            <div class="side-toolbar-filler">&nbsp;</div>
+            <div class='help-context-item help-context-item-widget-params'><span
+                    class='badge-help badge-help-incard'>2</span><span
+                    translate>widget_configurator_help_context_widget_params</span></div>
+        </div>
+    </div>
+    <div class="side-content">
+        <div class='help-context-item help-context-item-main'
+            [innerHtml]="'widget_configurator_help_context_main'|translate"></div>
+        <div class='toolbar toolbar-configurator toolbar-right'>
+            <div class='toolbar-filler'>&nbsp;</div>
+            <div class='toolbar-right help-context-target'>
+                <div class='toolbar-item rename-config-item' *ngIf="w || showHelp"
+                    title="{{'widget_configurator_toolbar_widgettitle_hint'|translate}}">
+                    <span *ngIf="!toolbarSetting.renameConfigurationTitle"
+                        (click)="toolbarSetting.renameConfigurationTitle=true">
+                        <span *ngIf="currentConfiguration">{{currentConfiguration.title}}</span>
+                        <span *ngIf="!currentConfiguration"><i>New Configuration</i></span>
+                    </span>
+                    <input type="text" [(ngModel)]="currentConfiguration.title"
+                        *ngIf="toolbarSetting.renameConfigurationTitle">&nbsp;
+                    <fa-icon [icon]="faEdit" class='btn-rename-config'
+                        (click)="toolbarSetting.renameConfigurationTitle=true"
+                        *ngIf="!toolbarSetting.renameConfigurationTitle"></fa-icon>
+                    <fa-icon [icon]="faCheck" (click)="toolbarSetting.renameConfigurationTitle=false"
+                        *ngIf="toolbarSetting.renameConfigurationTitle"></fa-icon>
+                </div>
+                <div class='toolbar-item' title="{{'widget_configurator_toolbar_load_hint'|translate}}">
+                    <fa-icon [icon]="faFolderOpen" (click)="toolbarSetting.loadDropdown=!toolbarSetting.loadDropdown">
+                    </fa-icon>
+                    <div class='toolbar-dropdown' *ngIf="toolbarSetting.loadDropdown">
+                        <div class="toolbar-dropdown-item">
+                            <input type="file" class="input-file" (change)="loadConfigurationFromFile($event)" />
+                            <span translate></span>&hellip;
+                        </div>
+                        <div class="toolbar-dropdown-separator"></div>
+                        <div class="toolbar-dropdown-title" *ngIf="recentConfigurations.length>0"><span
+                                translate>widget_configurator_toolbar_draft</span></div>
+                        <div class="toolbar-dropdown-item" *ngFor="let r of recentConfigurations"
+                            (click)="loadConfigurationFromStorage(r.title)">
+                            <div>{{r.title}}</div>
+                            <div><small class='text-muted'>{{r.date}}</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='toolbar-item' *ngIf="w || showHelp" (click)="saveConfigurationToFile()"
+                    title="{{'widget_configurator_toolbar_save_hint'|translate}}">
+                    <fa-icon [icon]="faSave"></fa-icon>
+                </div>
+                <div class='toolbar-item' *ngIf="w || showHelp"
+                    title="{{'widget_configurator_toolbar_code_hint'|translate}}" (click)="openWidgetCodeExport()">
+                    <fa-icon [icon]="faCode"></fa-icon>
+                </div>
+                <div class='toolbar-item help-context-button'
+                    title="{{'widget_configurator_toolbar_help_hint'|translate}}" (click)="showHelp=!showHelp">
+                    <fa-icon [icon]="faQuestion"></fa-icon>
+                </div>
+                <div class='help-context-item help-context-item-side-toolbar'>
+                    <div [innerHtml]="'widget_configurator_help_context_side_toolbar'|translate"></div>
+                </div>
+            </div>
+        </div>
+        <div class='side-content-main'>
+            <div class="empty-panel-message" *ngIf="!w">
+                <h1 translate>widget_configurator_start_message_title</h1>
+                <p translate>widget_configurator_start_message</p>
+            </div>
+            <div class="widget-live-container" #widgetLive></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="yucca-widget yucca-dataset-sankey-diagram" id="{{widgetId}}" #self>
+    <yucca-widget-header [widgetTitle]="widgetTitle" [widgetSubtitle]="widgetSubtitle" [widgetIntro]="widgetIntro">
+    </yucca-widget-header>
+    <div class="yucca-widget-chart-content" [ngStyle]="{'height': widgetHeight + 'px', 'width': widgetWidth + 'px'}">
+        <div *ngIf="isLoading" class="yucca-widget-loader">
+            <div class='spinner'></div>
+        </div>
+        <div class="yucca-widget-chart" *ngIf="!isLoading">
+            <lib-sankey [sankeyData]='sankeyData' width='{{widgetWidth}}' height='{{widgetHeight}}'></lib-sankey>
+        </div>
+        <div *ngIf="infoMessage" class='yucca-widget-info-message'>{{infoMessage}}</div>
+    </div>
+    <yucca-widget-footer [widgetFooter]="widgetFooter" [debugMessages]="debugMessages" [debug]="debug">
+    </yucca-widget-footer>
+</div>

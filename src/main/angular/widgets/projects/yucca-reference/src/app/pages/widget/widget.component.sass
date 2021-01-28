@@ -1,0 +1,96 @@
+@import '../../../styles/settings/_variables.sass'
+h1
+    margin-bottom: 20px
+h3
+    font-size: 20px
+    margin: 36px 0 6px 0
+
+.card-container
+    position: relative
+    margin-bottom: 1rem
+
+.side-content-main
+    flex-basis: 66%
+    overflow: hidden
+
+.widget-detail-dynamic-widget-panel
+    flex-basis: 33%
+    margin: 0 0 1rem 1rem
+    background: transparent
+    .sticky-notes
+        display: none
+        line-height: 1.2em
+        position: absolute
+        width: 15vw
+        top: 5
+        left: -15vw
+    .dataset-metadata-card
+        display: none
+    .dataexplorer-card
+        display: none
+
+.side-content-section_parameters,
+.side-content-section_styles
+    .side-content-main
+        flex-basis: 100%
+    .widget-detail-dynamic-widget-panel
+        display: none
+
+.side-content-section_example
+    .widget-detail-dynamic-widget-panel
+        margin-left: 15vw
+        .sticky-notes
+            display: flex
+            align-items: center
+        .sticky-notes-arrow
+            transform: rotate(5deg)
+    .dataset-metadata-card
+        display: block
+    .dataexplorer-card
+        display: block
+
+.table-columns
+    table-layout: fixed
+    font-size: 11px
+    max-width: 100%
+    span
+        display: block
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+    .slim-column
+        width: 25%
+    .datatype
+        font-family: monospace
+        color: #d80073
+        letter-spacing: 1px
+
+.widget-metadata-panel
+    padding: 0 36px
+    .table
+        font-size: 11px
+        thead
+            tr
+                th
+                    padding: 0 5px 5px 0
+                    border-width: 1px
+        tbody
+            tr
+                td
+                    padding: 0 5px 0 0
+                    border-width: 0
+
+.tool-list
+    li
+        border-bottom: solid 1px $light-border
+    .ng-fa-icon
+        width: 1rem
+        text-align: left
+
+::ng-deep
+    .dynamic-widget-related
+        margin-top: 1rem
+        text
+        opacity: .3
+//::ng-deep text
+//    opacity: 0

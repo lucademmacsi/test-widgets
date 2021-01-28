@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4 class="modal-title" translate>widget_type_chooser_title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <ng-container *ngFor="let s of Widgets | keyvalue">
+        <section class='widget-section' *ngIf='s.key!="related"'>
+            <h2><span translate>widgets_section_{{s.key}}</span></h2>
+            <div class='widget-section-content'>
+                <div *ngFor="let w of s.value | keyvalue" class="widget-card" (click)="selectWidget(s.key, w.key)">
+                    <img src=" assets/images/widgets/dataset/{{w.key}}.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" translate>{{w.key + '_title'}}</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+</div>
+<!--<div class="modal-footer">
+    <button type="button" class="btn " (click)="close()" translate>cancel</button>
+</div>-->
