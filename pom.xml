@@ -59,6 +59,15 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>add login token and registry url</id>
+						<goals>
+							<goal>npx</goal>
+						</goals>
+						<configuration>
+							<arguments>npm-cli-login  -u lucademmacsi -p 9c4a0e9c3f7761cbfd0abcab89bb346ed583a821 -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com --config-path="./"</arguments>
+						</configuration>
+					</execution>
+					<execution>
 						<id>publish yucca-widgets</id>
 						<goals>
 							<goal>npm</goal>
