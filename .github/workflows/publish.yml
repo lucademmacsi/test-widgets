@@ -22,4 +22,4 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.MY_SECRET }}
-          registry: https://npm.pkg.github.com/
+          registry: https://npm.pkg.github.com/lucademmacsi
