@@ -19,7 +19,7 @@ jobs:
 #      - run: npx npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com/ && npm run publish:yucca-widgets
 #      - run: cd ./src/main/angular/widgets/ && npm run publish:yucca-widgets
 #      - run: cd ./src/main/angular/widgets/ && npm run publish:yucca-elements
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@latest
         with:
           token: ${{ secrets.MY_SECRET }}
           registry: https://npm.pkg.github.com/lucademmacsi
