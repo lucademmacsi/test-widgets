@@ -93,7 +93,7 @@
 		<repository>
 			<id>central</id>
 			<name>repart-releases</name>
-			<url>https://repart.csi.it/artifactory/maven2</url>
+			<url>https://central.maven.org/maven2/</url>
 		</repository>
 		<repository>
 			<id>xerces-api</id>
@@ -101,10 +101,6 @@
 		</repository>
 		<repository>
 			<id>org.apache.xalan</id>
-			<url>https://central.maven.org/maven2/</url>
-		</repository>
-		<repository>
-			<id>central</id>
 			<url>https://central.maven.org/maven2/</url>
 		</repository>
 	</repositories>
