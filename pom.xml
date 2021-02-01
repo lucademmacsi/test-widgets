@@ -92,12 +92,8 @@
 	<repositories>
 		<repository>
 			<id>central</id>
-			<name>Maven Central</name>
-			<layout>default</layout>
-			<url>https://repo.maven.apache.org/maven2/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
+			<name>repart-releases</name>
+			<url>http://repart.csi.it/artifactory/maven2</url>
 		</repository>
 		<repository>
 			<id>xerces-api</id>
