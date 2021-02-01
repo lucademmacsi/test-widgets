@@ -35,7 +35,6 @@
 						<goals>
 							<goal>npm</goal>
 						</goals>
-						<!-- Optional configuration which provides for running any npm command -->
 						<configuration>
 							<arguments>install</arguments>
 						</configuration>
@@ -77,22 +76,6 @@
 						</configuration>
 					</execution>-->
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>npx test</id>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executable>npx npm-cli-login -u lucademmacsi -p $test -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com</executable>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build> <!--
