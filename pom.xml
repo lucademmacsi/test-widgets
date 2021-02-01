@@ -12,7 +12,7 @@
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.10.0</version>
+				<version>1.9.1</version>
 				<configuration>
 					<workingDirectory>src/main/angular/widgets</workingDirectory>
 				</configuration>
@@ -57,16 +57,7 @@
 						<configuration>
 							<arguments>run build:yucca-elements</arguments>
 						</configuration>
-					</execution>
-					<execution>
-						<id>add login token and registry url</id>
-						<goals>
-							<goal>npx</goal>
-						</goals>
-						<configuration>
-							<arguments>npm-cli-login  -u lucademmacsi -p 9c4a0e9c3f7761cbfd0abcab89bb346ed583a821 -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com --config-path="./"</arguments>
-						</configuration>
-					</execution>
+					</execution> <!--
 					<execution>
 						<id>publish yucca-widgets</id>
 						<goals>
@@ -84,7 +75,7 @@
 						<configuration>
 							<arguments>run publish:yucca-elements</arguments>
 						</configuration>
-					</execution>
+					</execution>-->
 				</executions>
 			</plugin>
 		</plugins>
