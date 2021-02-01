@@ -1,5 +1,10 @@
 on: push
 
+defaults:
+  run:
+    working-directory: ./src/main/angular/widgets/
+
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -8,9 +13,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
-      - run: cd ./src/main/angular/widgets/ && npm install
-      - run: cd ./src/main/angular/widgets/ && npm run build:yucca-widgets
+      - run: npm install
+      - run: npm run build:yucca-widgets
 #      - run: cd ./src/main/angular/widgets/ && npm run build:yucca-elements
-      - run: cd ./src/main/angular/widgets/ && npx npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com/ && npm run publish:yucca-widgets
+#      - run: npx npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com/ && npm run publish:yucca-widgets
 #      - run: cd ./src/main/angular/widgets/ && npm run publish:yucca-widgets
 #      - run: cd ./src/main/angular/widgets/ && npm run publish:yucca-elements
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.MY_SECRET }}
+          registry: https://npm.pkg.github.com/
