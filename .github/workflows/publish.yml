@@ -8,9 +8,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
-      - run: npm install
-      - run: (cd ./src/main/angular/widgets/ && npm run build:yucca-widgets ; npm run build:yucca-widgets)   
-      - run: (cd ./src/main/angular/widgets/ && npm run build:yucca-widgets ; npm run build:yucca-elements)   
+      - run: npm install && cd ./src/main/angular/widgets/ && npm run build:yucca-widgets
+#      - run: (cd ./src/main/angular/widgets/ && npm run build:yucca-widgets ; npm run build:yucca-widgets)   
+#      - run: (cd ./src/main/angular/widgets/ && npm run build:yucca-widgets ; npm run build:yucca-elements)   
 #      - uses: JS-DevTools/npm-publish@v1
 #        with:
 #          token: ${{ secrets.NPM_TOKEN }}
