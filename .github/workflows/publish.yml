@@ -9,9 +9,8 @@ jobs:
         with:
           node-version: 10
       - run: npm install
-      - run: cd ./src/main/angular/widgets/
-      - run: npm run build:yucca-widgets
-      - run: npm run build:yucca-elements
+      - run: (cd ./src/main/angular/widgets/ && npm run build:yucca-widgets ; npm run build:yucca-widgets)   
+      - run: (cd ./src/main/angular/widgets/ && npm run build:yucca-widgets ; npm run build:yucca-elements)   
 #      - uses: JS-DevTools/npm-publish@v1
 #        with:
 #          token: ${{ secrets.NPM_TOKEN }}
