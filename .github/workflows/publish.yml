@@ -1,11 +1,17 @@
 on: push
 
 jobs:
-
   publish:
-    name: Publish Widgets on Github Packages
     runs-on: ubuntu-latest
-
     steps:
-      - name: NPM Publish
-        uses: JS-DevTools/npm-publish@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm install
+      - run: npm run build:yucca-widgets
+      - run: npm run build:yucca-elements
+#      - uses: JS-DevTools/npm-publish@v1
+#        with:
+#          token: ${{ secrets.NPM_TOKEN }}
+#          registry: https://npm.pkg.github.com/
