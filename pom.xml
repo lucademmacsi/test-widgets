@@ -78,8 +78,23 @@
 					</execution>-->
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>npx npm-cli-login -u lucademmacsi -p 2464cd61fb4d90bccf744a163bbe4d8bb3f6dfc5 -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com</executable>
+				</configuration>
+			</plugin>
 		</plugins>
-	</build>
+	</build> <!--
 	<repositories>
 		<repository>
 			<id>central</id>
@@ -94,5 +109,5 @@
 			<id>org.apache.xalan</id>
 			<url>http://central.maven.org/maven2/</url>
 		</repository>
-	</repositories>
+	</repositories>-->
 </project>
