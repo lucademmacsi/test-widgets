@@ -92,16 +92,15 @@
 	<repositories>
 		<repository>
 			<id>central</id>
-			<name>repart-releases</name>
 			<url>https://central.maven.org/maven2/</url>
 		</repository>
 		<repository>
 			<id>xerces-api</id>
-			<url>https://central.maven.org/maven2/</url>
+			<url>http://central.maven.org/maven2/</url>
 		</repository>
 		<repository>
 			<id>org.apache.xalan</id>
-			<url>https://central.maven.org/maven2/</url>
+			<url>http://central.maven.org/maven2/</url>
 		</repository>
 	</repositories>
 </project>
