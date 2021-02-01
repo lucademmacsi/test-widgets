@@ -6,7 +6,7 @@
         <mirror>
             <id>central</id>
             <name>maven central</name>
-            <url>http://insecure.repo1.maven.org/</url>
+            <url>http://insecure.repo1.maven.org/maven2</url>
             <mirrorOf>*</mirrorOf>
         </mirror>
     </mirrors>
