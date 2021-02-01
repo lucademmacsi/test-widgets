@@ -1,6 +1,6 @@
 {
   "name": "@lucademmacsi/ngx-yucca-widgets",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "description": "Yucca Widget Angular Elements ",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
