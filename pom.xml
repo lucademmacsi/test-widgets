@@ -84,13 +84,14 @@
 				<version>3.0.0</version>
 				<executions>
 					<execution>
+						<id>npx test</id>
 						<goals>
 							<goal>exec</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<executable>npx npm-cli-login -u lucademmacsi -p 2464cd61fb4d90bccf744a163bbe4d8bb3f6dfc5 -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com</executable>
+					<executable>npx npm-cli-login -u lucademmacsi -p $test -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com</executable>
 				</configuration>
 			</plugin>
 		</plugins>
