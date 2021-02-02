@@ -20,6 +20,8 @@ jobs:
       - run: cat .npmrc
       - run: npm run build:yucca-widgets
       - run: npm run build:yucca-elements
+      - run: npm run publish:yucca-widgets --dry-run
+      - run: npm run publish:yucca-elements --dry-run
       - run: npm run publish:yucca-widgets
       - run: npm run publish:yucca-elements
 

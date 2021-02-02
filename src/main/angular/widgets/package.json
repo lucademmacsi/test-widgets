@@ -4,11 +4,13 @@
   "scripts": {
     "build:yucca-widgets": "ng build --prod --project yucca-widgets",
     "publish:yucca-widgets": "npm publish --verbose ./projects/yucca-widgets/dist",
+    "publish:yucca-widgets --dry-run": "npm publish --dry-run --verbose ./projects/yucca-widgets/dist",
     "build:yucca-elements": "ng build --prod --project yucca-elements --output-hashing none --output-path ./projects/yucca-elements/dist && npm run pack:yucca-elements",
     "pack:yucca-elements": "concat ./projects/yucca-elements/dist/polyfills-es5.js ./projects/yucca-elements/dist/runtime.js ./projects/yucca-elements/dist/main.js > projects/yucca-elements/dist/yucca-elements.js ",
     "build:yucca-elements-dev": "ng build --project yucca-elements && npm run pack:yucca-elements-dev",
     "pack:yucca-elements-dev": "concat ./projects/yucca-elements/dist/polyfills-es5.js ./projects/yucca-elements/dist/runtime.js ./projects/yucca-elements/dist/main.js ./projects/yucca-elements/dist/vendor.js ./projects/yucca-elements/dist/styles.js> projects/yucca-elements/dist/yucca-elements.js ",
     "publish:yucca-elements": "npm publish --verbose ./projects/yucca-elements/",
+    "publish:yucca-elements --dry-run": "npm publish --dry-run --verbose ./projects/yucca-elements/",
     "build:prod:yucca-reference": "ng build --prod --aot=false --base-href /dashboard/ --project yucca-reference --output-path ./projects/yucca-reference",
     "start:yucca-reference": "ng serve --port 4204 --project yucca-reference",
     "start:yucca-widgets-test": "ng serve --project yucca-widgets-test"
