@@ -5,7 +5,7 @@ defaults:
     working-directory: ./src/main/angular/widgets/
 
 jobs:
-  publish:
+  init:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,8 +15,21 @@ jobs:
       - run: npm install
       - run: npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com --config-path "./.npmrc" 
       - run: cat .npmrc
+
+  publish-yucca-widgets:
+    needs: init
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       - run: npm run build:yucca-widgets
-#      - run: npm run build:yucca-elements
-#      - run: npm run publish:yucca-widgets
-#      - run: npm run publish:yucca-elements
       - run: npm run publish:yucca-widgets
+
+  publish-yucca-elements:
+    needs: init
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm run build:yucca-elements
+      - run: npm run publish:yucca-elements
