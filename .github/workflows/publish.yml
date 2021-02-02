@@ -19,7 +19,7 @@ jobs:
       - run: npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com --config-path "./.npmrc" 
       - run: cat .npmrc
       - run: npm run build:yucca-widgets
-      - run: npm run build:yucca-elements
+      - run: npm run build:yucca-elements 
       - run: npm run publish:yucca-widgets --dry-run
       - run: npm run publish:yucca-elements --dry-run
       - run: npm run publish:yucca-widgets
