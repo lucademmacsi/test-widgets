@@ -4,26 +4,19 @@ defaults:
   run:
     working-directory: ./src/main/angular/widgets/
 
-
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 10
+          node-version: '14'
       - run: npm install
+      - run: npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com --config-path "./.npmrc" 
+      - run: cat .npmrc
       - run: npm run build:yucca-widgets
 #      - run: npm run build:yucca-elements
-      - run: npx npm-cli-login -u lucademmacsi -p ${{ secrets.MY_SECRET }} -e luca.demma@consulenti.csi.it -s "@lucademmacsi" -r https://npm.pkg.github.com/ --config-path="./../widgets/" 
 #      - run: npm run publish:yucca-widgets
 #      - run: npm run publish:yucca-elements
-#      - run: echo $'@lucademmacsi:registry=https://npm.pkg.github.com/\n//npm.pkg.github.com/:_authToken=${{ secrets.MY_SECRET }}' >> .npmrc
-      - run: cat .npmrc
       - run: npm run publish:yucca-widgets
-#      - uses: JS-DevTools/npm-publish@latest
-#        with:
-#          token: ${{ secrets.MY_SECRET }}
-#          registry: https://npm.pkg.github.com/lucademmacsi
-#          package: ./src/main/angular/widgets/package.json
